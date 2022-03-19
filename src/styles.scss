@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+// BREADCRUMB
+.common-breadcrumd {
+    color: #031b3d;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    li {
+        &:not(:last-child)::after {
+            display: inline-block;
+            content: "/";
+            margin: 0px 5px;
+        }
+        a {
+            color: #031b3d;
+        }
+        span {
+            color: #031b3d96;
+        }
+    }
+
+}
+
+// PAGE DETAIL
+.detail-course {
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px #00000030;
+    padding: 20px;
+    .detail-course--name {
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: .2px;
+        text-transform: uppercase;
+    }
+    .detail-course--info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        p:not(:last-child):after {
+            display: inline-block;
+            content: "-";
+            margin:0px 10px;
+        }
+        p {
+            i.fa {
+                margin-right: 5px;
+            }
+        }
+    }
+    .detail-course--thumbnail {
+        height: 385px;
+        max-width: 100%;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    .detail-course--content {
+        text-align: justify;
+    }
+}
