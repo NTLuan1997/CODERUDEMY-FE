@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  url: "https://code-udemy.herokuapp.com/API/course/home?limit=5&start=0",
+  // url: "http://localhost:3000/API/course/home?limit=5&start=0"
 };
