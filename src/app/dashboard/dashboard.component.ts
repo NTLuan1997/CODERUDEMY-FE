@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpsService } from '../service/https.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,18 +7,8 @@ import { HttpsService } from '../service/https.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(
-    private httpsService: HttpsService
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.httpsService.callAPI()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
+  ngOnInit(): void { }
 
 }
