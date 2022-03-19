@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/model/course';
 import { HttpsService } from 'src/app/service/https.service';
 import { environment } from 'src/environments/environment';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,8 @@ export class ProductComponent implements OnInit {
   courses: Course[] = [];
 
   constructor(
-    private httpsService: HttpsService
+    private httpsService: HttpsService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class ProductComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  redirectDetail(course: Course) {
+    this.router.navigate(["/khoa-hoc/chi-tiet-khoa-hoc", course["_id"]]);
   }
 
 }
