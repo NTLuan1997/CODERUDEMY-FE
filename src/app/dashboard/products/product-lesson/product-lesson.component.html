@@ -1,0 +1,68 @@
+<ul class="list-unstyled d-flex align-items-center common-breadcrumd">
+    <li><a routerLink="/trang-chu">Khóa học</a></li>
+    <li><span>Chi tiết khóa học</span></li>
+</ul>
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <a href="#" class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Giới thiệu về Ngôn Ngữ Đánh Dấu Siêu Văn Bản
+                </a>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <a href="#" class="btn btn-link btn-block text-left collapsed" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Các thẻ text trong HTML
+                </a>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <a href="#" class="btn btn-link btn-block text-left collapsed" data-toggle="collapse"
+                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Các thẻ liên kết trong HTML
+                </a>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
+                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
