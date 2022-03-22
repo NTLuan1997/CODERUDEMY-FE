@@ -1,0 +1,107 @@
+.product-lesson {
+    .accordion {
+        .card {
+            .card-header {
+                background-color: #f7f9fa;
+                border-bottom: 1px solid #d1d7dc;
+                .btn-lesson {
+                    color: #031b4f;
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-transform: capitalize;
+                }
+            }
+            .card-body {
+                ul {
+                    padding-left: 20px;
+                    li {
+                        a {
+                            display: block;
+                            color: #3c3c3c;
+                            margin-bottom: 3px;
+                            &::before {
+                                display: inline-block;
+                                content: "\f02d";
+                                font-family: "FontAwesome"; 
+                                font-weight: 900;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .lesson-registry {
+        height: 100%;
+        .registry-wrapper {
+            // border: 1px solid #00000014;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+            position: fixed;
+            top: 80px;
+            width: 285px;
+            .registry-infor {
+                padding: 10px;
+                .infor--course {
+                    .infor--course-registry {
+                        border: none;
+                        border-radius: 3px;
+                        background-color: #031b3d;
+                        color: white;
+                        letter-spacing: .3px;
+                        font-size: 17px;
+                        font-weight: 700;
+                        padding: 10px;
+                        transition: background-color .3s ease;
+                        text-transform: uppercase;
+                        width: 100%;
+                        &:focus-visible, &:focus {
+                            border-color: unset;
+                            background-color:#031b3dad;
+                            outline-color: unset;
+                        }
+
+                        &:hover {
+                            background-color:#031b3dad;
+                        }
+                    }
+                    .infor--course-title {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-top: 10px;
+                        text-transform: capitalize;
+                    }
+                    .infor--course-content {
+                        padding-left: 5px;
+                        li {
+                            p {
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-start;
+                                font-size: 14px;
+                                margin-bottom: 3px;
+                                i.fa {
+                                    margin-right: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .registry-share-more {
+        border-top: 1px solid #d1d7dc;
+        padding: 10px;
+        .share-more--title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
+        .share-more--description {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    }
+}
