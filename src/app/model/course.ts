@@ -9,3 +9,20 @@ export class Course {
     "description": String;
     "thumbnail": String
 }
+
+class CourseInformation {
+    course: Course = new Course();
+
+    constructor() { }
+
+    getCourse() {
+        return this.course;
+    }
+
+    setCourse(course: Course) {
+        localStorage.setItem("courseCurrent", JSON.stringify(course));
+        this.course = course;
+    }
+}
+
+export const courseInformation = new CourseInformation();
