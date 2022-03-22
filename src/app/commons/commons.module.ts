@@ -5,13 +5,15 @@ import { CommonsRoutingModule } from './commons-routing.module';
 import { CommonHeaderComponent } from './common-header/common-header.component';
 import { CommonFooterComponent } from './common-footer/common-footer.component';
 import { CommonAnonymousComponent } from './common-anonymous/common-anonymous.component';
+import { CommonLoaderComponent } from './common-loader/common-loader.component';
 
 
 @NgModule({
   declarations: [
     CommonHeaderComponent,
     CommonFooterComponent,
-    CommonAnonymousComponent
+    CommonAnonymousComponent,
+    CommonLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { CommonAnonymousComponent } from './common-anonymous/common-anonymous.co
   ],
   exports: [
     CommonHeaderComponent,
-    CommonFooterComponent
+    CommonFooterComponent,
+    CommonLoaderComponent
   ]
 })
 export class CommonsModule { }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Course } from '../model/course';
+import { loader } from '../model/loader';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class HttpsService {
 
   callAPI() {
     return new Promise<Course>((resolve, reject) => {
+      loader.setLoader(true);
       fetch(environment.url, {
         "method": "GET",
         headers: {
@@ -22,6 +24,9 @@ export class HttpsService {
         })
         .then((data) => {
           resolve(data);
+        })
+        .then(() => {
+          loader.setLoader(false);
         })
         .catch((err) => {
           reject(err);

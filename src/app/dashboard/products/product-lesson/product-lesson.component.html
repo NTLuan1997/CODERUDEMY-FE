@@ -4,7 +4,26 @@
 </ul>
 
 <div class="product-lesson">
-    <div class="product-lesson--header"></div>
+    <div class="product-lesson--header">
+        <div class="lesson--header-infor">
+            <h2 class="header-infor--course_name">{{course.courseName}}</h2>
+            <p class="header-infor--description">{{course.description}}</p>
+            <div class="header-infor--meta">
+                <span>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Last update: {{course.updateDate}}
+                </span>
+                <span>
+                    <i class="fa fa-language" aria-hidden="true"></i>
+                    Ngôn ngữ: Tiếng Việt
+                </span>
+                <span>
+                    <i class="fa fa-tencent-weibo" aria-hidden="true"></i>
+                    Tác giả: {{course.author}}
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-9">
             <div class="accordion" id="accordionExample">
