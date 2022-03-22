@@ -3,66 +3,151 @@
     <li><span>Chi tiết khóa học</span></li>
 </ul>
 
-<div class="accordion" id="accordionExample">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-                <a href="#" class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    Giới thiệu về Ngôn Ngữ Đánh Dấu Siêu Văn Bản
-                </a>
-            </h2>
-        </div>
+<div class="product-lesson">
+    <div class="row">
+        <div class="col-9">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <a href="#" class="btn-lesson" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                Giới thiệu về Ngôn Ngữ Đánh Dấu Siêu Văn Bản
+                            </a>
+                        </h2>
+                    </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
-                </ul>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Khái niệm cơ bản về HTMLElement
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Cài đặt môi trường làm việc
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Viết trương trình đầu tiên
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <a href="#" class="btn-lesson collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                Các thẻ text trong HTML
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Thẻ chứa văn bản trong HTML
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Thẻ chứa nội dung tiêu đề
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <a href="#" class="btn-lesson collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                Các thẻ liên kết trong HTML
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Khái niệm về thẻ liên kết
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                        Thẻ tạo liên kết cơ bản
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="lesson-registry">
+                <div class="registry-wrapper">
+                    <div class="registry--thumbanil">
+                        <img class="img-fluid" src="../../../../assets/img/product/course_00.jpg" alt="thumbnail">
+                    </div>
+                    <div class="registry-infor">
+                        <div class="infor--course">
+                            <button class="infor--course-registry">Đăng ký</button>
+                        </div>
+                        <div class="infor--course">
+                            <h3 class="infor--course-title">Khóa học bao gồm:</h3>
+                            <ul class="infor--course-content list-unstyled">
+                                <li>
+                                    <p>
+                                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                                        <span>Số bài viết của khóa học - 40 bài</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-ioxhost" aria-hidden="true"></i>
+                                        <span>Những chủ đề khóa học - 5 phần</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <span>Thời gian khóa học - 3 ngày</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                        <span>Tài nguyên được chia sẽ miễn phí</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="registry-share-more">
+                        <h3 class="share-more--title">Chia sẽ nhiều hơn:</h3>
+                        <p class="share-more--description">Đăng ký và chia sẽ khóa học đến người bài viết nếu bạn thấy
+                            nó hữu ích</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-                <a href="#" class="btn btn-link btn-block text-left collapsed" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Các thẻ text trong HTML
-                </a>
-            </h2>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-                <a href="#" class="btn btn-link btn-block text-left collapsed" data-toggle="collapse"
-                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Các thẻ liên kết trong HTML
-                </a>
-            </h2>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 1</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 2</a></li>
-                    <li><a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">Bài 3</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
 </div>
