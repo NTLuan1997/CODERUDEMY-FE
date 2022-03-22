@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course, courseInformation } from 'src/app/model/course';
 import { HttpsService } from 'src/app/service/https.service';
-import { environment, information } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Router } from "@angular/router";
 
 @Component({
