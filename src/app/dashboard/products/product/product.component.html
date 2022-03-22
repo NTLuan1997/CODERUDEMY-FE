@@ -1,7 +1,7 @@
 <section class="products mt-3">
     <div class="row align-items-stretch">
         <div class="col-3" *ngFor="let item of courses">
-            <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc']" class="product-item d-block">
+            <a (click)="redirectCourseLesson(item)" class="product-item d-block">
                 <img class="img-fluid item-thumbnail" src="{{item.thumbnail}}" alt="course">
                 <div class="item-infor">
                     <h2 class="infor-course course--name">{{item.courseName}}</h2>

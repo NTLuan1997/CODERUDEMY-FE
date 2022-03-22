@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/model/course';
+import { Course, courseInformation } from 'src/app/model/course';
 import { HttpsService } from 'src/app/service/https.service';
-import { environment } from 'src/environments/environment';
+import { environment, information } from 'src/environments/environment';
 import { Router } from "@angular/router";
 
 @Component({
@@ -33,8 +33,9 @@ export class ProductComponent implements OnInit {
       })
   }
 
-  redirectDetail(course: Course) {
-    this.router.navigate(["/khoa-hoc/chi-tiet-khoa-hoc", course["_id"]]);
+  redirectCourseLesson(course: Course) {
+    courseInformation.setCourse(course);
+    this.router.navigate(['/khoa-hoc/chi-tiet-khoa-hoc']);
   }
 
 }
