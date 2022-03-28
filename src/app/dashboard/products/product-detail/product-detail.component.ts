@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { courseInformation } from 'src/app/model/course';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,14 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   constructor(
-    private router: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.router.queryParams.subscribe(params => {
-      console.log(params);
-      console.log(params["id"]);
-    })
+    courseInformation.getCourse();
   }
 
 }
