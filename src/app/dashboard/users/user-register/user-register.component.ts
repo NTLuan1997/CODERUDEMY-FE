@@ -39,8 +39,10 @@ export class UserRegisterComponent implements OnInit {
 
       this.userService.userRegister(this.User)
         .then((data: any) => {
-          if (data?.status) {
+          if (data) {
+            this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
             this.router.navigate(["/"]);
+            return data;
 
           } else {
             console.log(data.message);

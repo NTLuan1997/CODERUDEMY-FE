@@ -1,14 +1,24 @@
 <div class="user-register">
     <div class="wrapper-register">
         <h2 class="register--title">Đăng nhập</h2>
-        <form>
+        <form [formGroup]="signInForm">
             <div class="form-group">
                 <label for="user-signin-email">Email đăng nhập</label>
-                <input type="email" class="form-control" id="user-signin-email" placeholder="Email@gmail.com">
+                <input type="email"
+                        class="form-control"
+                        id="user-signin-email"
+                        formControlName="email"
+                        [(ngModel)]="User.email"
+                        placeholder="Email@gmail.com">
             </div>
             <div class="form-group">
                 <label for="user-signin-password">Mật khẩu</label>
-                <input type="password" class="form-control" id="user-signin-password" placeholder="Nhập 6 ký tự hoặc nhiều hơn">
+                <input type="password"
+                    class="form-control"
+                    id="user-signin-password"
+                    formControlName="password"
+                    [(ngModel)]="User.password"
+                    placeholder="Nhập 6 ký tự hoặc nhiều hơn">
             </div>
             <button type="submit" class="btn btn-user-signin">Đăng nhập</button>
             <div class="user-change-form">

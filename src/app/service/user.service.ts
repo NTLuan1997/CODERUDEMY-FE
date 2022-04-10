@@ -20,9 +20,9 @@ export class UserService {
     })
   }
 
-  userLogOut(token: any) {
+  userSignIn(user: User) {
     return new Promise((resolve, reject) => {
-      this.service.POST('/API/user/client-logOut', token)
+      this.service.POST('/API/user/client-signIn', user)
         .subscribe(
           (data: any) => resolve(data)
         )

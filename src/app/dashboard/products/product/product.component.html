@@ -1,18 +1,22 @@
 <section class="products mt-3">
     <div class="row align-items-stretch">
-        <div class="col-3" *ngFor="let item of courses">
-            <a (click)="redirectCourseLesson(item)" class="product-item d-block">
-                <img class="img-fluid item-thumbnail" src="{{item.thumbnail}}" alt="course">
-                <div class="item-infor">
-                    <h2 class="infor-course course--name">{{item.courseName}}</h2>
-                    <h3 class="infor-course course-author">Tác giả: {{item.author}}</h3>
-                    <h3 class="infor-course course-description">{{item.description}}</h3>
-                    <h3 class="infor-course course-type">
-                        <span>Khóa học : {{item.type}}</span>
-                        <span>Bài học : {{item.coin}}</span>
-                    </h3>
-                </div>
-            </a>
+        <div class="col-12" *ngIf="courses.length == 0">Khoa hoc khong ton tai</div>
+
+        <div *ngIf="courses.length != 0">
+            <div class="col-3" *ngFor="let item of courses">
+                <a (click)="redirectCourseLesson(item)" class="product-item d-block">
+                    <img class="img-fluid item-thumbnail" src="{{item.thumbnail}}" alt="course">
+                    <div class="item-infor">
+                        <h2 class="infor-course course--name">{{item.courseName}}</h2>
+                        <h3 class="infor-course course-author">Tác giả: {{item.author}}</h3>
+                        <h3 class="infor-course course-description">{{item.description}}</h3>
+                        <h3 class="infor-course course-type">
+                            <span>Khóa học : {{item.type}}</span>
+                            <span>Bài học : {{item.coin}}</span>
+                        </h3>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </section>

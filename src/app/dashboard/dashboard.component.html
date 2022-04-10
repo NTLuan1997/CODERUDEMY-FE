@@ -21,7 +21,7 @@
                             </a>
                         </li>
                         <li *ngIf="!userSignIn">
-                            <a href="https://code-udemy.herokuapp.com/">
+                            <a [routerLink]="['/user/signin']">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-power-off" aria-hidden="true"></i>
                                 </p>
