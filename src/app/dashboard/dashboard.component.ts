@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
 
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -25,15 +27,9 @@ export class DashboardComponent implements OnInit {
 
   clientLogout() {
     if (this.userSignIn) {
-      console.log("Hello world");
-      let token = { "token": this.cookie.get("clientToken") };
-      this.userService.userLogOut(token)
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          throw err;
-        })
+      this.cookie.delete("clientToken");
+      this.router.navigate(["/"]);
+      window.location.reload();
     }
   }
 }
