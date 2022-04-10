@@ -255,4 +255,110 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
                 => if condition = true run then => return thenBlock.
                 => else condition = false run else => return elseBlock.
 
+
+    - Angular Forms:
+        + Template Driven Forms (TDF)
+            <form #register="ngForm" (submit)="onSubmit(register)" novalidate>
+            <div ngModelGroup="infor">
+
+                <div class="form-group">
+                    <label for="user-signin-name">Tên đăng ký</label>
+                    <input type="text" required class="form-control" #registerUserName="ngModel"
+                        [class.is-invalid]="registerUserName.invalid && registerUserName.touched" id="user-signin-name"
+                        name="user-signin-name" placeholder="Tên người dùng" [(ngModel)]="userModel.name">
+                    <div class="form-modal"
+                        *ngIf="registerUserName.errors && (registerUserName.invalid && registerUserName.touched)">
+                        <p *ngIf="registerUserName.errors.hasOwnProperty('required')">
+                            Trường này không được để trống
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-email">Email người dùng</label>
+                    <input type="email" required class="form-control" #registerEmail="ngModel"
+                        [class.is-invalid]="registerEmail.invalid && registerEmail.touched" id="user-signin-email"
+                        name="user-signin-email" placeholder="Email@gmail.com" [(ngModel)]="userModel.email">
+                    <div class="form-modal"
+                        *ngIf="registerEmail.errors && (registerEmail.invalid && registerEmail.touched)">
+                        <p *ngIf="registerEmail.errors.hasOwnProperty('required')">Trường này không được để trống
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-password">Mật khẩu</label>
+                    <input type="password" required class="form-control" #registerPassword="ngModel" pattern="^\d{6}$"
+                        [class.is-invalid]="registerPassword.invalid && registerPassword.touched"
+                        id="user-signin-password" name="user-signin-password" placeholder="Nhập 6 ký tự hoặc nhiều hơn"
+                        [(ngModel)]="userModel.password">
+                    <div class="form-modal"
+                        *ngIf="registerPassword.errors && (registerPassword.invalid && registerPassword.touched)">
+                        <p *ngIf="registerPassword.errors.hasOwnProperty('required')">Trường này không được để trống</p>
+                        <p *ngIf="registerPassword.errors.hasOwnProperty('pattern')">Nhập ít nhất 6 ký tự</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-dateofbirth">Ngày sinh</label>
+                    <input type="date" required class="form-control" #registerDateOfBirth="ngModel"
+                        [class.is-invalid]="registerDateOfBirth.invalid && registerDateOfBirth.touched"
+                        id="user-signin-dateofbirth" name="user-signin-dateofbirth" placeholder="Tên người dùng"
+                        [(ngModel)]="userModel.dateofbirth">
+                    <div class="form-modal"
+                        *ngIf="registerDateOfBirth.errors && (registerDateOfBirth.invalid && registerDateOfBirth.touched)">
+                        <p *ngIf="registerDateOfBirth.errors.hasOwnProperty('required')">
+                            Trường này không được để trống
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" [disabled]="register.form.invalid" class="btn btn-user-signin">Đăng nhập</button>
+            <div class="user-change-form">
+                <a [routerLink]="['/user/signin']">Đăng nhập</a>
+            </div>
+        </form>
+
+        + Reactive Forms (RF)
+
+            registerForm = new FormGroup({
+               userName: new FormControl(''),
+               email: new FormControl(''),
+               password: new FormControl(''),
+               dateOfBirth: new FormControl('')
+            })
+
+            <form [formGroup]="registerForm">
+                <div class="form-group">
+                    <label for="user-signin-name">Tên đăng ký</label>
+                    <input type="text" formControlName="userName" class="form-control" id="user-signin-name"
+                        placeholder="Tên người dùng">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-email">Email người dùng</label>
+                    <input type="email" class="form-control" id="user-signin-email" formControlName="email"
+                        placeholder="Email@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-password">Mật khẩu</label>
+                    <input type="password" class="form-control" id="user-signin-password" formControlName="password"
+                        placeholder="Nhập 6 ký tự hoặc nhiều hơn">
+                </div>
+
+                <div class="form-group">
+                    <label for="user-signin-dateofbirth">Ngày sinh</label>
+                    <input type="date" class="form-control" id="user-signin-dateofbirth" formControlName="dateOfBirth"
+                        placeholder="Tên người dùng">
+                </div>
+
+                <button type="submit" class="btn btn-user-signin">Đăng nhập</button>
+                <div class="user-change-form">
+                    <a [routerLink]="['/user/signin']">Đăng nhập</a>
+                </div>
+            </form>
+
+
 */

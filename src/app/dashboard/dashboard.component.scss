@@ -1,4 +1,4 @@
-.slider-wrapper{
+.slider-wrapper {
     height: 100vh;
     .slider-bard {
         box-shadow: 0px 0px 2px 0px #00000030;
@@ -12,6 +12,7 @@
         position: fixed;
         padding: 15px 20px;
         width: 225px;
+        z-index: 1;
         li {
             border-radius: 5px;
             box-shadow: 0px 0px 1px 1px #0000001f;
@@ -19,25 +20,35 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 10px 5px;
             width: 100%;
             &:not(:first-child) {
                 margin-top: 20px;
             }
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 background-color: #ddd;
             }
-            button {
-                padding: 10px;
-                border: unset;
-                background-color: unset;
-                i.fa {
-                    font-size: 15px;
+            a {
+                color: #000000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                cursor: pointer;
+                height: 100%;
+                padding: 20px 5px;
+                width: 100%;
+                p {
+                    font-size: 12px;
+                    margin-bottom: 0px;
+                    text-transform: uppercase;
                 }
-            }
-            span {
-                font-size: 11px;
-                text-transform: uppercase;
+                .slider-bard--icon {
+                    margin-bottom: 5px;
+                    i.fa {
+                        font-size: 15px;
+                    }
+                }
             }
         }
     }

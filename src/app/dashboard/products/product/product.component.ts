@@ -13,12 +13,12 @@ export class ProductComponent implements OnInit {
   courses: Course[] = [];
 
   constructor(
-    private httpsService: HttpsService,
+    private httpsService: HttpsService<Course>,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.httpsService.callAPI()
+    this.httpsService.callAPI("/API/course/course?limit=5&start=0")
       .then((data: any) => {
         if (data.hasOwnProperty("courses")) {
           this.courses = data?.courses.map((e: Course) => {

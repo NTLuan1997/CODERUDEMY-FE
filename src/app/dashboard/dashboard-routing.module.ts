@@ -7,9 +7,8 @@ const routes: Routes = [
     path: "",
     component: DashboardComponent,
     children: [
-      { path: "", redirectTo: "/khoa-hoc", pathMatch: "full" },
       {
-        path: "khoa-hoc",
+        path: "",
         loadChildren: () => import("./products/products.module").then((m) => m.ProductsModule)
       }
     ]

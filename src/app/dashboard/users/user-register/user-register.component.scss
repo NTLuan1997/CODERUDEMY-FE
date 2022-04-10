@@ -1,0 +1,36 @@
+.user-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    .wrapper-register {
+        box-shadow: 0 0 2px #00000030;
+        padding: 35px 20px 15px 20px;
+        width: 415px;
+        .register--title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        form {
+            .btn-user-signin {
+                background-color: #f28d0f;
+                color: #ffffff;
+                text-transform: capitalize;
+                width: 100%;
+            }
+            .user-change-form {
+                margin-top: 15px;
+                a {
+                    color: #000000;
+                    &:hover {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+    }
+}
