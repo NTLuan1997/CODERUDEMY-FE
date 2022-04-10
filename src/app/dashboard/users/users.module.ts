@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { APP_BASE_HREF, CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UserRegisterComponent } from './user-register/user-register.component';
@@ -20,7 +20,8 @@ import { CookieService } from 'ngx-cookie-service';
     UsersRoutingModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   exports: [
     UserRegisterComponent,
