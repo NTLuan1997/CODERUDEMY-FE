@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // url: "https://code-udemy.herokuapp.com",
-  url: "http://localhost:3000",
+  url: "https://code-udemy.herokuapp.com",
+  // url: "http://localhost:3000",
   urlThumbnail: "https://nguyenphuongduy.000webhostapp.com/img/",
 };
 
