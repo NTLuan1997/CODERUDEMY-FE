@@ -4,6 +4,9 @@ MIT
 @angular/core
 MIT
 
+@angular/forms
+MIT
+
 @angular/platform-browser
 MIT
 
@@ -38,6 +41,9 @@ THE SOFTWARE.
 
 fontawesome-4.7
 ISC
+
+ngx-cookie-service
+MIT
 
 rxjs
 Apache-2.0

@@ -5,8 +5,12 @@ import { CommonAnonymousComponent } from './commons/common-anonymous/common-anon
 const routes: Routes = [
   { path: "trang-chu", redirectTo: "", pathMatch: "full" },
   {
+    path: "user",
+    loadChildren: () => import("../app/dashboard/users/users.module").then(m => m.UsersModule)
+  },
+  {
     path: "",
-    loadChildren: () => import("../app/dashboard/dashboard.module").then(module => module.DashboardModule)
+    loadChildren: () => import("../app/dashboard/dashboard.module").then(m => m.DashboardModule)
   },
   { path: "**", component: CommonAnonymousComponent }
 ];

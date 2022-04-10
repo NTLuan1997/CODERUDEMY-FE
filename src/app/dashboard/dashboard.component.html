@@ -4,17 +4,37 @@
             <div class="col-2">
                 <div class="slider-wrapper">
                     <ul class="slider-bard list-unstyled mb-0">
-                        <li>
-                            <button><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                            <span>Khóa học đăng ký</span>
+                        <li *ngIf="!userSignIn">
+                            <a [routerLink]="['/user/register']">
+                                <p class="slider-bard--icon">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </p>
+                                <p class="slider-bard--des">Khóa học đăng ký</p>
+                            </a>
                         </li>
                         <li>
-                            <button><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-                            <span>Người dùng</span>
+                            <a href="https://code-udemy.herokuapp.com/">
+                                <p class="slider-bard--icon">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                </p>
+                                <p class="slider-bard--des">Người dùng</p>
+                            </a>
                         </li>
-                        <li>
-                            <button><i class="fa fa-power-off" aria-hidden="true"></i></button>
-                            <span>Đăng xuất</span>
+                        <li *ngIf="!userSignIn">
+                            <a href="https://code-udemy.herokuapp.com/">
+                                <p class="slider-bard--icon">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                </p>
+                                <p class="slider-bard--des">Đăng nhập</p>
+                            </a>
+                        </li>
+                        <li *ngIf="userSignIn">
+                            <a (click)="clientLogout()">
+                                <p class="slider-bard--icon">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                </p>
+                                <p class="slider-bard--des">Đăng xuất</p>
+                            </a>
                         </li>
                     </ul>
                 </div>
