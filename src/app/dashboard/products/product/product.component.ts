@@ -25,7 +25,6 @@ export class ProductComponent implements OnInit {
             e.thumbnail = `${environment.urlThumbnail}${e.thumbnail}`;
             return e;
           })
-          console.log(this.courses);
         }
       })
       .catch((err) => {
