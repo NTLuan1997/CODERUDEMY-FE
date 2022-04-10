@@ -1,7 +1,7 @@
 <div class="user-register">
     <div class="wrapper-register">
         <h2 class="register--title">Đăng nhập</h2>
-        <form [formGroup]="signInForm">
+        <form [formGroup]="signInForm" (submit)="userSignIn()">
             <div class="form-group">
                 <label for="user-signin-email">Email đăng nhập</label>
                 <input type="email"
