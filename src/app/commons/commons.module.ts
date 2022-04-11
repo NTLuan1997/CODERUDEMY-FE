@@ -6,6 +6,8 @@ import { CommonHeaderComponent } from './common-header/common-header.component';
 import { CommonFooterComponent } from './common-footer/common-footer.component';
 import { CommonAnonymousComponent } from './common-anonymous/common-anonymous.component';
 import { CommonLoaderComponent } from './common-loader/common-loader.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonFormInputComponent } from './common-form-input/common-form-input.component';
 
 
 @NgModule({
@@ -13,16 +15,20 @@ import { CommonLoaderComponent } from './common-loader/common-loader.component';
     CommonHeaderComponent,
     CommonFooterComponent,
     CommonAnonymousComponent,
-    CommonLoaderComponent
+    CommonLoaderComponent,
+    CommonFormInputComponent
   ],
   imports: [
     CommonModule,
-    CommonsRoutingModule
+    CommonsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonHeaderComponent,
     CommonFooterComponent,
-    CommonLoaderComponent
+    CommonLoaderComponent,
+    CommonFormInputComponent
   ]
 })
 export class CommonsModule { }

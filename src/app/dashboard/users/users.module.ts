@@ -6,6 +6,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { CommonsModule } from 'src/app/commons/commons.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CookieService } from 'ngx-cookie-service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    CommonsModule
   ],
   providers: [
     CookieService,

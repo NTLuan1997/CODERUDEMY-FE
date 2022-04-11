@@ -12,6 +12,9 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserSigninComponent implements OnInit {
   User: User = new User();
+  email: FormControl;
+  password: FormControl;
+  submitEvent: Boolean = false;
   signInForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -19,33 +22,41 @@ export class UserSigninComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private cookie: CookieService
-  ) { }
+  ) {
+    this.email = new FormControl(this.User.email, [Validators.required]);
+    this.password = new FormControl(this.User.password);
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.createForm();
   }
 
   createForm() {
     this.signInForm = this.fb.group({
-      email: new FormControl("", [Validators.required]),
-      password: new FormControl("", [Validators.required])
+      email: this.email,
+      password: this.password
     })
   }
 
   userSignIn() {
-    this.userService.userSignIn(this.User)
-    .then((data:any) => {
-      if(data) {
-          this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
-          this.router.navigate(["/"]);
+    // console.log(this.User);
+    this.submitEvent = true;
+    if(this.signInForm.status == "VALID") {
 
-      } else {
-        console.log(data.message);
-      }
-    })
-    .catch((err) => {
-      throw err;
-    })
+      // this.userService.userSignIn(this.User)
+      // .then((data:any) => {
+      //   if(data) {
+      //       this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+      //       this.router.navigate(["/"]);
+
+      //   } else {
+      //     console.log(data.message);
+      //   }
+      // })
+      // .catch((err) => {
+      //   throw err;
+      // })
+    }
   }
 
 }
