@@ -6,6 +6,7 @@
                 Label="Email đăng nhập"
                 [FormController]="email"
                 [Submit]="submitEvent"
+                (InputChanged)="User.email=$event"
                 Id="user-email"
                 Placeholder="VD: Email@gmail.com"
                 Type="email">
@@ -15,6 +16,7 @@
                 Label="Mật khẩu"
                 [FormController]="password"
                 [Submit]="submitEvent"
+                (InputChanged)="User.password=$event"
                 Id="user-password"
                 Placeholder="Nhập 6 ký tự hoặc nhiều hơn"
                 Type="password">

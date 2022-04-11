@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { ValidationService } from 'src/app/service/validation.service';
 
 @Component({
   selector: 'app-user-signin',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./user-signin.component.scss', '../user-register/user-register.component.scss']
 })
 export class UserSigninComponent implements OnInit {
-  User: User = new User();
+  User = new User();
   email: FormControl;
   password: FormControl;
   submitEvent: Boolean = false;
@@ -20,11 +21,12 @@ export class UserSigninComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private validation: ValidationService,
     private router: Router,
     private cookie: CookieService
   ) {
-    this.email = new FormControl(this.User.email, [Validators.required]);
-    this.password = new FormControl(this.User.password);
+    this.email = new FormControl(this.User.email, [this.validation.required(), this.validation.email()]);
+    this.password = new FormControl(this.User.password, [this.validation.required(), this.validation.minLength(6), this.validation.maxLength(15)]);
   }
 
   ngOnInit() {
@@ -39,23 +41,21 @@ export class UserSigninComponent implements OnInit {
   }
 
   userSignIn() {
-    // console.log(this.User);
     this.submitEvent = true;
     if(this.signInForm.status == "VALID") {
+      this.userService.userSignIn(this.User)
+      .then((data:any) => {
+        if(data) {
+            this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+            this.router.navigate(["/"]);
 
-      // this.userService.userSignIn(this.User)
-      // .then((data:any) => {
-      //   if(data) {
-      //       this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
-      //       this.router.navigate(["/"]);
-
-      //   } else {
-      //     console.log(data.message);
-      //   }
-      // })
-      // .catch((err) => {
-      //   throw err;
-      // })
+        } else {
+          console.log(data.message);
+        }
+      })
+      .catch((err) => {
+        throw err;
+      })
     }
   }
 

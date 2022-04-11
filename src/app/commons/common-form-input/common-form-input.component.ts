@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ export class CommonFormInputComponent implements OnInit {
   @Input("Type") Type: String | undefined;
   @Input("Submit") Submit: Boolean | any;
 
+  @Output() InputChanged: EventEmitter<any> = new EventEmitter<any>();
   isError: boolean = false;
 
   constructor(
@@ -29,18 +30,19 @@ export class CommonFormInputComponent implements OnInit {
   }
 
   blur(parameter: any) {
-    if(!parameter.target.value) {
+    if(this.FormController.errors) {
       this.handleError();
     }
   }
 
   input(parameter: any) {
     let formMessage = this.queryElement("small.form-message");
-    let input = this.queryElement(`${this.Id}`);
     if(formMessage.innerText) {
       formMessage.innerText = '';
       this.isError = false;
     }
+
+    this.InputChanged.emit(parameter.target.value);
   }
 
   queryElement(selector: String) {
@@ -51,7 +53,7 @@ export class CommonFormInputComponent implements OnInit {
     if(this.FormController.errors) {
       let formMessage = this.queryElement("small.form-message");
       this.isError = true;
-      formMessage.innerText = "Vui long nhap truong nay";
+      formMessage.innerText = this.FormController.errors.message;
     }
   }
 
