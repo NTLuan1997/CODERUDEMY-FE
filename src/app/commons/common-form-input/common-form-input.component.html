@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label for="user-signin-email">{{ Label }}</label>
+    <input
+        class="form-control"
+        [ngClass]="{'is-invalid': isError}"
+        (blur)="blur($event)"
+        (input)="input($event)"
+        [formControl]="FormController"
+        [id]="Id"
+        [placeholder]="Placeholder"
+        [type]="Type">
+    <small class="form-message" [ngClass]="{'is-error': isError}"></small>
+</div>
