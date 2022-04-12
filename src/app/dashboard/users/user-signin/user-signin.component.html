@@ -3,7 +3,7 @@
         <h2 class="register--title">Đăng nhập</h2>
         <form [formGroup]="signInForm" (submit)="userSignIn()">
             <app-common-form-input
-                Label="Email đăng nhập"
+                Label="Email"
                 [FormController]="email"
                 [Submit]="submitEvent"
                 (InputChanged)="User.email=$event"

@@ -2,29 +2,46 @@
     <div class="wrapper-register">
         <h2 class="register--title">Đăng ký</h2>
         <form [formGroup]="registerForm" (submit)="onSubmit()">
-            <div class="form-group">
-                <label for="user-signin-name">Tên đăng ký</label>
-                <input type="text" formControlName="user_name" class="form-control" id="user-signin-name"
-                    [(ngModel)]="User['user_name']" placeholder="Tên người dùng">
-            </div>
+            
+            <app-common-form-input
+                Label="Họ và tên"
+                [FormController]="userName"
+                [Submit]="submitEvent"
+                (InputChanged)="User['user_name']=$event"
+                Id="user-name"
+                Placeholder="Họ và tên của bạn"
+                Type="text">
+            </app-common-form-input>
 
-            <div class="form-group">
-                <label for="user-signin-email">Email người dùng</label>
-                <input type="email" class="form-control" id="user-signin-email" formControlName="email"
-                    [(ngModel)]="User.email" placeholder="Email@gmail.com">
-            </div>
+            <app-common-form-input
+                Label="Email"
+                [FormController]="email"
+                [Submit]="submitEvent"
+                (InputChanged)="User.email=$event"
+                Id="user-email"
+                Placeholder="VD: Email@gmail.com"
+                Type="email">
+            </app-common-form-input>
 
-            <div class="form-group">
-                <label for="user-signin-password">Mật khẩu</label>
-                <input type="password" class="form-control" id="user-signin-password" formControlName="password"
-                    [(ngModel)]="User.password" placeholder="Nhập 6 ký tự hoặc nhiều hơn">
-            </div>
+            <app-common-form-input
+                Label="Mật khẩu"
+                [FormController]="password"
+                [Submit]="submitEvent"
+                (InputChanged)="User.password=$event"
+                Id="user-password"
+                Placeholder="Nhập mật khẩu"
+                Type="password">
+            </app-common-form-input>
 
-            <div class="form-group">
-                <label for="user-signin-dateofbirth">Ngày sinh</label>
-                <input type="date" class="form-control" id="user-signin-dateofbirth" formControlName="dateOfBirth"
-                    [(ngModel)]="User.dateOfBirth" placeholder="Tên người dùng">
-            </div>
+            <app-common-form-input
+                Label="Ngày sinh"
+                [FormController]="dateOfBirth"
+                [Submit]="submitEvent"
+                (InputChanged)="User.dateOfBirth=$event"
+                Id="user-dateofbirth"
+                Placeholder="Nhập mật khẩu"
+                Type="date">
+            </app-common-form-input>
 
             <button type="submit" class="btn btn-user-signin">Đăng nhập</button>
             <div class="user-change-form">
