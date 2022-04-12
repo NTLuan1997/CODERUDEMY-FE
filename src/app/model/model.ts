@@ -6,15 +6,7 @@ export const Handlle = {
         "required": "Trường này không được trống",
         "minLength": "Độ dài nội dung phải lớn hơn",
         "maxLength": "Độ dài nội dung phải nhỏ hơn",
+        "password": "Mật khẩu phải chứa ký tự 'A-Za-z','#?!@$%^&*' hoặc '0-9'",
+        "userNotFound": "Tài khoản người dùng chưa đăng ký"
     }
-}
-
-export const User = {
-    "user_name": '',
-    "email": '',
-    "password": '',
-    "status": false,
-    "dateOfBirth": new Date(),
-    "role": 'Member',
-    "courses": []
 }

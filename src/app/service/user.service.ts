@@ -14,18 +14,24 @@ export class UserService {
   userRegister(user: User) {
     return new Promise((resolve, reject) => {
       this.service.POST('/API/user/client-register', user)
-        .subscribe(
-          (data: any) => resolve(data)
-        )
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      })
     })
   }
 
   userSignIn(user: User) {
     return new Promise((resolve, reject) => {
       this.service.POST('/API/user/client-signIn', user)
-        .subscribe(
-          (data: any) => resolve(data)
-        )
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      })
     })
   }
 }

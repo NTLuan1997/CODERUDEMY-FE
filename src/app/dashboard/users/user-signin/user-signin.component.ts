@@ -26,7 +26,9 @@ export class UserSigninComponent implements OnInit {
     private cookie: CookieService
   ) {
     this.email = new FormControl(this.User.email, [this.validation.required(), this.validation.email()]);
-    this.password = new FormControl(this.User.password, [this.validation.required(), this.validation.minLength(6), this.validation.maxLength(15)]);
+    this.password = new FormControl(this.User.password,
+                    [this.validation.required(), this.validation.minLength(6),
+                    this.validation.maxLength(15), this.validation.password()]);
   }
 
   ngOnInit() {
@@ -45,18 +47,24 @@ export class UserSigninComponent implements OnInit {
     if(this.signInForm.status == "VALID") {
       this.userService.userSignIn(this.User)
       .then((data:any) => {
-        if(data) {
+        if(data.status) {
             this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
             this.router.navigate(["/"]);
-
         } else {
-          console.log(data.message);
+          this.valid(data);
         }
+        console.log(this.signInForm);
       })
       .catch((err) => {
         throw err;
       })
     }
+  }
+
+  valid(parameter: any) {
+    Object.keys(this.signInForm.controls).forEach((e) => {
+      this.signInForm.controls[e].setErrors(this.validation.response(parameter));
+    })
   }
 
 }
