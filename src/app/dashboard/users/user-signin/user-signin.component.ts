@@ -13,22 +13,22 @@ import { ValidationService } from 'src/app/service/validation.service';
 })
 export class UserSigninComponent implements OnInit {
   User = new User();
+  signInForm: FormGroup = new FormGroup({});
+  submitEvent: Boolean = false;
   email: FormControl;
   password: FormControl;
-  submitEvent: Boolean = false;
-  signInForm: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private validation: ValidationService,
+    private valid: ValidationService,
     private router: Router,
     private cookie: CookieService
   ) {
-    this.email = new FormControl(this.User.email, [this.validation.required(), this.validation.email()]);
+    this.email = new FormControl(this.User.email, [this.valid.required(), this.valid.email()]);
     this.password = new FormControl(this.User.password,
-                    [this.validation.required(), this.validation.minLength(6),
-                    this.validation.maxLength(15), this.validation.password()]);
+                    [this.valid.required(), this.valid.minLength(6),
+                    this.valid.maxLength(15), this.valid.password()]);
   }
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class UserSigninComponent implements OnInit {
             this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
             this.router.navigate(["/"]);
         } else {
-          this.valid(data);
+          this.validator(data);
         }
         console.log(this.signInForm);
       })
@@ -61,9 +61,9 @@ export class UserSigninComponent implements OnInit {
     }
   }
 
-  valid(parameter: any) {
+  validator(parameter: any) {
     Object.keys(this.signInForm.controls).forEach((e) => {
-      this.signInForm.controls[e].setErrors(this.validation.response(parameter));
+      this.signInForm.controls[e].setErrors(this.valid.response(parameter));
     })
   }
 
