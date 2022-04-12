@@ -39,21 +39,49 @@ export class HttpsService<T> {
     })
   }
 
-  GET(endPoint: String): Observable<T> {
+  GET(endPoint: String): Observable<any> {
     let url = environment.url + endPoint;
-    return this.http.get<T>(url)
-      .pipe(map((res) => res))
+    return this.http.get<any>(url)
+      .pipe(
+        map((res) => res),
+        catchError((err) => err)
+      )
   }
 
-  POST(endPoint: String, body: T): Observable<T> {
+  // POST(endPoint: String, body: any): Observable<any> {
+  //   let url = environment.url + endPoint;
+  //   return this.http.post<any>(url, body)
+  //     .pipe(
+  //       map((res) => res)
+  //       // catchError((err) => err)
+  //     )
+  // }
+
+  POST(endPoint: string, body: any): Promise<any> {
     let url = environment.url + endPoint;
-    return this.http.post<T>(url, body)
-      .pipe(map((res) => res))
+    return  new Promise((resolve, reject) => {
+      fetch(url, { 
+        "method": 'POST',
+        "headers": {
+          "content-type": 'application/json'
+        },
+        "body": JSON.stringify(body)
+      })
+      .then((data) => {
+        resolve(data.json());
+      })
+      .catch((err) => {
+        reject(err);
+      })
+    })
   }
 
-  PUT(endPoint: String, body: T): Observable<T> {
+  PUT(endPoint: String, body: any): Observable<any> {
     let url = environment.url + endPoint;
-    return this.http.put<T>(url, body)
-      .pipe(map((res) => res))
+    return this.http.put<any>(url, body)
+      .pipe(
+        map((res) => res),
+        catchError((err) => err)
+      )
   }
 }

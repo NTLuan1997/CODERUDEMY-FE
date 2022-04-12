@@ -8,6 +8,7 @@ import { Handlle } from "../model/model";
 export class ValidationService {
 
   regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  regexPassword = /([A-Za-z]){1,}([#?!@$%^&*]){1,}([A-Za-z]{1,})|([\d]{1,})$/g;
 
   constructor() { }
 
@@ -52,5 +53,32 @@ export class ValidationService {
       }
       return null;
     }
+  }
+
+  password(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      if(control.value) {
+        if(!this.regexPassword.test(control.value.trim())) {
+          return {"error": "password", "message": Handlle.InputError.password};
+        }
+        return null;
+      }
+      return null;
+    }
+  }
+
+  response(res: any) {
+    if(res) return this.responseHandle(res);
+    return null;
+  }
+
+  responseHandle(parameter: any) {
+    let error = null;
+    switch(parameter.type) {
+      case "User Not Found":
+      default:
+        error = {"error": parameter.type, "message": Handlle.InputError.userNotFound};
+    }
+    return error;
   }
 }
