@@ -24,10 +24,17 @@
             }
             .user-change-form {
                 margin-top: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p {
+                    margin-bottom: 0px;
+                    margin-right: 3px;
+                }
                 a {
-                    color: #000000;
+                    color: #f28d0f;
                     &:hover {
-                        color: inherit;
+                        color: #f28d0f;
                     }
                 }
             }

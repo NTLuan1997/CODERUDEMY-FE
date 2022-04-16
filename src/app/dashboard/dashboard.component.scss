@@ -15,7 +15,7 @@
         z-index: 1;
         li {
             border-radius: 5px;
-            box-shadow: 0px 0px 1px 1px #0000001f;
+            box-shadow: 0px 0px 1px 1px #00000017;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,7 +26,7 @@
             }
             &:hover,
             &:focus {
-                background-color: #ddd;
+                background-color: #fafafa8f;
             }
             a {
                 color: #000000;
