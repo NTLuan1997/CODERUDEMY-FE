@@ -3,7 +3,7 @@ export class Course {
     "courseName": String;
     "author": String;
     "type": String;
-    "coin": Number;
+    "unit": Number;
     "createDate": Date;
     "updateDate": Date;
     "description": String;

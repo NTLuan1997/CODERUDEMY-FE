@@ -362,3 +362,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 */
+
+/*
+    - Passport: Chức năng xác thực người dùng.
+        + Gồm các thành phần:
+            1) Initialize() : Chức năng khởi tạo.
+            2) Session()    : Chúc năng khởi tạo.
+
+            3) Authenticate(): Chức năng chứng thực.
+
+            4) SerializeUser(): Ghi giá trị đại diện người dùng vào Cookie.
+            5) DeserializeUser(): Thông tin đại diện sẽ được lấy ra trong những lần request sau.
+*/

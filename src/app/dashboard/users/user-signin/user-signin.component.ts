@@ -44,7 +44,7 @@ export class UserSigninComponent implements OnInit {
 
   userSignIn() {
     this.submitEvent = true;
-    if(this.signInForm.status == "VALID") {
+    if(this.signInForm.valid) {
       this.userService.userSignIn(this.User)
       .then((data:any) => {
         if(data.status) {

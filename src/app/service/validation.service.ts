@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Handlle } from "../model/model";
+import { Errors } from "../model/model";
 import * as moment from 'moment';
 
 @Injectable({
@@ -18,15 +18,15 @@ export class ValidationService {
       if(control.value) {
         let age = moment().diff(control.value, "years");
         if(age == 0) {
-          return { "error": "dateOfBirth", "message": Handlle.dateOfBirth.ageZero };
+          return { "error": "dateOfBirth", "message": Errors.dateOfBirth.invalid };
         }
         
         if(age < minAge) {
-          return { "error": "dateOfBirth", "message": `${Handlle.dateOfBirth.minAge} ${minAge}` };
+          return { "error": "dateOfBirth", "message": `${Errors.dateOfBirth.minAge} ${minAge}` };
         }
 
         if(age > maxAge) {
-          return { "error": "dateOfBirth", "message": `${Handlle.dateOfBirth.maxAge} ${maxAge}` };
+          return { "error": "dateOfBirth", "message": `${Errors.dateOfBirth.maxAge} ${maxAge}` };
         }
       }
     }
@@ -35,7 +35,7 @@ export class ValidationService {
   required(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
       if(control.value) return null;
-      return { "error": "required", "message": Handlle.Input.required };
+      return { "error": "required", "message": Errors.input.required };
     }
   }
 
@@ -43,7 +43,7 @@ export class ValidationService {
     return (control: AbstractControl): {[key: string]: any} | null => {
       if(control.value) {
         if(!this.regexEmail.test(control.value.trim())) {
-          return { "error": "email", "message": Handlle.Input.email };
+          return { "error": "email", "message": Errors.email.invalid };
         }
         return null;
       }
@@ -55,7 +55,7 @@ export class ValidationService {
     return (control: AbstractControl): {[key: string]: any} | null => {
       if(control.value) {
         if(control.value.trim().length < parameter) {
-          return {"error": "minLength", "message": `${Handlle.Input.minLength} - ${parameter}`};
+          return {"error": "minLength", "message": `${Errors.input.minLength} - ${parameter}` };
         }
         return null;
       }
@@ -67,7 +67,7 @@ export class ValidationService {
     return (control: AbstractControl): {[key: string]: any} | null => {
       if(control.value) {
         if(control.value.trim().length > parameter) {
-          return {"error": "maxLength", "message": `${Handlle.Input.maxLength} - ${parameter}`};
+          return {"error": "maxLength", "message": `${Errors.input.maxLength} - ${parameter}` };
         }
         return null;
       }
@@ -79,7 +79,7 @@ export class ValidationService {
     return (control: AbstractControl): {[key: string]: any} | null => {
       if(control.value) {
         if(!this.regexPassword.test(control.value.trim())) {
-          return {"error": "password", "message": Handlle.Input.password};
+          return { "error": "password", "message": Errors.password.invalid };
         }
         return null;
       }
@@ -97,7 +97,7 @@ export class ValidationService {
     switch(parameter.type) {
       case "User Not Found":
       default:
-        error = {"error": parameter.type, "message": Handlle.Input.userNotFound};
+        error = { "error": parameter.type, "message": Errors.responsed.userNotFound };
     }
     return error;
   }

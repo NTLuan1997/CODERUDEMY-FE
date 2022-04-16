@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
       .then((data: any) => {
         if (data.hasOwnProperty("courses")) {
           if (data?.courses.length) {
+            console.log(data?.courses);
             this.courses = data?.courses.map((e: Course) => {
               e.thumbnail = `${environment.urlThumbnail}${e.thumbnail}`;
               return e;
@@ -36,7 +37,7 @@ export class ProductComponent implements OnInit {
 
   redirectCourseLesson(course: Course) {
     courseInformation.setCourse(course);
-    this.router.navigate(['/khoa-hoc/chi-tiet-khoa-hoc']);
+    this.router.navigate(['/chi-tiet-khoa-hoc']);
   }
 
 }

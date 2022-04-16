@@ -50,28 +50,25 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitEvent = true;
-    console.log(this.User);
-    console.log(this.registerForm);
+    if (this.registerForm.valid) {
+      this.User.status = true;
+      this.User.role = "Member";
+      this.User.courses = [];
 
-    // if (this.registerForm.status == "VALID") {
-    //   this.User.status = true;
-    //   this.User.role = "Member";
-    //   this.User.courses = [];
+      this.userService.userRegister(this.User)
+        .then((data: any) => {
+          if (data) {
+            this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+            this.router.navigate(["/"]);
 
-    //   this.userService.userRegister(this.User)
-    //     .then((data: any) => {
-    //       if (data) {
-    //         this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
-    //         this.router.navigate(["/"]);
-
-    //       } else {
-    //         console.log(data.message);
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       throw err;
-    //     })
-    // }
+          } else {
+            console.log(data.message);
+          }
+        })
+        .catch((err) => {
+          throw err;
+        })
+    }
   }
 
 }
