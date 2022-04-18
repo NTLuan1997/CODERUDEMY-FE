@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { User } from 'src/app/model/user';
+import { User, EndPoint } from 'src/app/model/model';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 
@@ -45,7 +45,7 @@ export class UserSigninComponent implements OnInit {
   userSignIn() {
     this.submitEvent = true;
     if(this.signInForm.valid) {
-      this.userService.userSignIn(this.User)
+      this.userService.usertPost(this.User, EndPoint.user.signIn)
       .then((data:any) => {
         if(data.status) {
             this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });

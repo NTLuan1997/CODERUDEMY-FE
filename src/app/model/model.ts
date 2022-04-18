@@ -1,5 +1,44 @@
 export class Model { }
 
+export class Course {
+    "_id": String;
+    "courseName": String;
+    "author": String;
+    "type": String;
+    "unit": Number;
+    "createDate": Date;
+    "updateDate": Date;
+    "description": String;
+    "thumbnail": String
+}
+
+export class User {
+    "user_name": String;
+    "email": String;
+    "password": String;
+    "status": Boolean;
+    "dateOfBirth": Date;
+    "role": String;
+    "courses": Array<any>;
+}
+
+export const EndPoint = {
+    "user": {
+        "register": "/API/user/client-register",
+        "signIn": "/API/user/client-signIn"
+    },
+    "course": {
+        "common": "/API/course/course"
+    },
+    "unit": {
+
+    },
+    "lesson": {
+
+    }
+
+}
+
 export const Errors = {
     "dateOfBirth": {
         "invalid": "Tuổi người dùng không hợp lệ",

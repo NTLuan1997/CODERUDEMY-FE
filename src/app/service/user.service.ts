@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user';
+import { User } from '../model/model';
 import { HttpsService } from './https.service';
 
 @Injectable({
@@ -11,21 +11,9 @@ export class UserService {
     private service: HttpsService<any>
   ) { }
 
-  userRegister(user: User) {
+  usertPost(user: User, endPoint: string) {
     return new Promise((resolve, reject) => {
-      this.service.POST('/API/user/client-register', user)
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((err) => {
-        reject(err);
-      })
-    })
-  }
-
-  userSignIn(user: User) {
-    return new Promise((resolve, reject) => {
-      this.service.POST('/API/user/client-signIn', user)
+      this.service.POST(endPoint, user)
       .then((data) => {
         resolve(data);
       })

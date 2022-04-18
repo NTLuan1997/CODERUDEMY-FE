@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { User } from 'src/app/model/user';
+import { User, EndPoint } from 'src/app/model/model';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 
@@ -55,7 +55,7 @@ export class UserRegisterComponent implements OnInit {
       this.User.role = "Member";
       this.User.courses = [];
 
-      this.userService.userRegister(this.User)
+      this.userService.usertPost(this.User, EndPoint.user.register)
         .then((data: any) => {
           if (data) {
             this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
