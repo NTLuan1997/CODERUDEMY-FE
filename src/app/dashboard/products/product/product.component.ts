@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.courseService.courseGet(EndPoint.course.common, 5, 0)
+    this.courseService.courseGet(EndPoint.course['course-common'], 5, 0)
       .then((data: any) => {
         if (data.hasOwnProperty("courses")) {
           if (data?.courses.length) {

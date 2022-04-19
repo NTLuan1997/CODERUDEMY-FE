@@ -28,7 +28,8 @@ export const EndPoint = {
         "signIn": "/API/user/client-signIn"
     },
     "course": {
-        "common": "/API/course/course"
+        "course-common": "/API/course/course",
+        "course-detail": "/API/course/course-detail"
     },
     "unit": {
 
