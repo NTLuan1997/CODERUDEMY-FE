@@ -36,6 +36,18 @@
             }
         }
     }
+    .lesson-blank {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+        p {
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    }
     .accordion {
         .card {
             .card-header {

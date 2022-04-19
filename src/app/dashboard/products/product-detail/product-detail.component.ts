@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.course = !Object.keys(courseInfor.get()).length ? JSON.parse(String(localStorage.getItem('courseCurrent'))) : courseInfor.get()
+    this.course = !Object.keys(courseInfor.get()).length ? JSON.parse(String(localStorage.getItem('courseCurrent'))) : courseInfor.get();
   }
 
 }
