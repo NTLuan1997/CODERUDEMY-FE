@@ -9,16 +9,22 @@ import { Course } from 'src/app/model/model';
 })
 export class ProductLessonComponent implements OnInit {
   course: Course = new Course();
+  lessonExist: Boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(courseInfor.get());
     if(!Object.values(courseInfor.get()).length) {
       if(localStorage.getItem('courseCurrent')) {
+        this.lessonExist = true;
         this.course = JSON.parse(String(localStorage.getItem('courseCurrent')));
+
+      } else {
+        this.lessonExist = false;
+
       }
     } else {
+      this.lessonExist = true;
       this.course = courseInfor.get();
     }
   }

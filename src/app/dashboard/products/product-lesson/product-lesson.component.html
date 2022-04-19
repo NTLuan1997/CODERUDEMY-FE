@@ -26,6 +26,12 @@
     </div>
     <div class="row">
         <div class="col-9">
+            <div class="lesson-blank" *ngIf="!lessonExist">
+                <p>Bài học hiện trống...</p>
+            </div>
+        </div>
+
+        <div class="col-9" *ngIf="lessonExist">
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
