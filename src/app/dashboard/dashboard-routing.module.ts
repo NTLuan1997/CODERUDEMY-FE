@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { UserInformationComponent } from './users/user-information/user-information.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
       {
         path: "",
         loadChildren: () => import("./products/products.module").then((m) => m.ProductsModule)
+      },
+      { 
+        path: "user",
+        component: UserInformationComponent
       }
     ]
   }

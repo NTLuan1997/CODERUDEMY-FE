@@ -7,12 +7,14 @@ import { UserSigninComponent } from './user-signin/user-signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonsModule } from 'src/app/commons/commons.module';
+import { UserInformationComponent } from './user-information/user-information.component';
 
 
 @NgModule({
   declarations: [
     UserRegisterComponent,
-    UserSigninComponent
+    UserSigninComponent,
+    UserInformationComponent
   ],
   imports: [
     CommonModule,
@@ -24,10 +26,6 @@ import { CommonsModule } from 'src/app/commons/commons.module';
   providers: [
     CookieService,
     { provide: APP_BASE_HREF, useValue: '/' }
-  ],
-  exports: [
-    UserRegisterComponent,
-    UserSigninComponent
   ]
 })
 export class UsersModule { }
