@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { courseInfor } from 'src/app/model/course';
-import { Course } from 'src/app/model/model';
+import { Course, EndPoint } from 'src/app/model/model';
+import { CourseService } from 'src/app/service/course.service';
 
 @Component({
   selector: 'app-product-lesson',
@@ -9,15 +10,26 @@ import { Course } from 'src/app/model/model';
 })
 export class ProductLessonComponent implements OnInit {
   course: Course = new Course();
+  courseDetail: any;
   lessonExist: Boolean = true;
 
-  constructor() { }
+  constructor(
+    private courseService: CourseService
+  ) { }
 
   ngOnInit(): void {
     if(!Object.values(courseInfor.get()).length) {
       if(localStorage.getItem('courseCurrent')) {
         this.lessonExist = true;
         this.course = JSON.parse(String(localStorage.getItem('courseCurrent')));
+        this.courseService.coursePost(this.course, EndPoint.course['course-detail'])
+        .then((courseDetail) => {
+          console.log(courseDetail);
+          this.courseDetail = courseDetail;
+        })
+        .catch((err) => {
+          throw err;
+        })
 
       } else {
         this.lessonExist = false;
