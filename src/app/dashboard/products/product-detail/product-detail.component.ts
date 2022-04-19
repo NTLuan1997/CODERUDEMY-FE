@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/model/model';
-import { courseInfor } from 'src/app/model/course';
+import { courseInfor } from 'src/app/model/commons';
 
 @Component({
   selector: 'app-product-detail',

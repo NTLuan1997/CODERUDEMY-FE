@@ -20,7 +20,34 @@
                 background-color: #f28d0f;
                 color: #ffffff;
                 text-transform: capitalize;
+                margin-top: 15px;
                 width: 100%;
+            }
+            .btn-user-social {
+                margin: 9px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: strech;
+                .user-social {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    span {
+                        font-size: 22px;
+                        position: relative;
+                        i.fa {
+                            left: 50%;
+                            position: absolute;
+                            top: 50%;
+                            transform: translate(0%, -50%);
+                        }
+                    }
+                    p {
+                        width: 100%;
+                        margin-bottom: 0;
+                    }
+                }
             }
             .user-change-form {
                 margin-top: 15px;

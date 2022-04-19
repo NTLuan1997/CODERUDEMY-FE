@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Router } from "@angular/router";
 import { Course, EndPoint } from 'src/app/model/model';
-import { courseInfor } from 'src/app/model/course';
+import { courseInfor } from 'src/app/model/commons';
 import { CourseService } from 'src/app/service/course.service';
 
 @Component({

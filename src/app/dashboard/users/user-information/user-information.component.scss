@@ -1,0 +1,27 @@
+.user-information {
+    .information--profile {
+        .profile_title {
+            border-bottom: 1px solid #00000030;
+            color: #24292f;
+            font-size: 20px;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .profile_infor {
+            .profile_infor__priture {
+                border-radius: 225px;
+                height: 225px;
+                margin-left: 150px;
+                overflow: hidden;
+                width: 225px;
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .input-custom {
+                width: 50%;
+            }
+        }
+    }
+}

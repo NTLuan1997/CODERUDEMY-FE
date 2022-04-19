@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { courseInfor } from 'src/app/model/course';
+import { courseInfor } from 'src/app/model/commons';
 import { Course, EndPoint } from 'src/app/model/model';
 import { CourseService } from 'src/app/service/course.service';
 
