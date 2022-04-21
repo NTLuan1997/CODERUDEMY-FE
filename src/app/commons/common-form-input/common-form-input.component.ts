@@ -9,12 +9,15 @@ import { FormControl } from '@angular/forms';
 export class CommonFormInputComponent implements OnInit {
   @Input("Label") Label: String | undefined;
   @Input("FormController") FormController: FormControl | any;
-  @Input("Placeholder") Placeholder: String | undefined;
+  @Input("Placeholder") Placeholder: String | any;
   @Input("Id") Id : String | undefined;
   @Input("Type") Type: String | undefined;
+  @Input("TypeElement") TypeElement: String | undefined;
+  @Input("Options") Options: Array<string> | undefined;
   @Input("Submit") Submit: Boolean | any;
 
-  @Output() InputChanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Input: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Change: EventEmitter<any> = new EventEmitter<any>();
   isError: boolean = false;
 
   constructor(
@@ -42,7 +45,17 @@ export class CommonFormInputComponent implements OnInit {
       this.isError = false;
     }
 
-    this.InputChanged.emit(parameter.target.value);
+    this.Input.emit(parameter.target.value);
+  }
+
+  change(parameter: any) {
+    let formMessage = this.queryElement("small.form-message");
+    if(formMessage.innerText) {
+      formMessage.innerText = '';
+      this.isError = false;
+    }
+
+    this.Change.emit(parameter.target.value);
   }
 
   queryElement(selector: String) {

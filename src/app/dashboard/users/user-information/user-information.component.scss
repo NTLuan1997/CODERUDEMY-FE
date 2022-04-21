@@ -1,26 +1,60 @@
 .user-information {
     .information--profile {
         .profile_title {
-            border-bottom: 1px solid #00000030;
+            border-bottom: 1px solid #0000001a;
             color: #24292f;
             font-size: 20px;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
             margin-bottom: 15px;
         }
-        .profile_infor {
+        .priture-wrapper {
+            position: relative;
             .profile_infor__priture {
-                border-radius: 225px;
-                height: 225px;
+                border-radius: 100%;
+                border: 5px solid #fff;
+                box-shadow: 0px 0px 1px 1px #00000017;
+                height: 200px;
                 margin-left: 150px;
                 overflow: hidden;
-                width: 225px;
+                position: relative;
+                width: 200px;
                 img {
                     height: 100%;
                     width: 100%;
                 }
             }
-            .input-custom {
-                width: 50%;
+            .priture--update {
+                background-color: #f28d0f;
+                bottom: 35px;
+                border-radius: 100%;
+                border-color: unset;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-bottom-color: transparent;
+                box-shadow: 0px 0px 2px 0px #00000030;
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 32px;
+                left: 50%;
+                position: absolute;
+                transform: translateX(-345%);
+                width: 32px;
+                &:focus {
+                    outline-color: transparent;
+                }
+                &:active {
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                }
+            }
+            .priture--name {
+                font-size: 25px;
+                margin-top: 10px;
+                margin-bottom: 0px;
+                margin-left: 150px;
             }
         }
     }

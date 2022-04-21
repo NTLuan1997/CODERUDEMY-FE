@@ -7,24 +7,31 @@
     .wrapper-register {
         box-shadow: 0 0 2px #00000030;
         padding: 35px 20px 15px 20px;
-        width: 415px;
+        min-width: 675px;
         .register--title {
+            display: flex;
+            align-items: center;
             font-size: 30px;
             font-weight: 700;
             margin-bottom: 25px;
             text-align: center;
             text-transform: uppercase;
+            width: 100%;
+            .back-page {
+                margin-bottom: 13px;
+            }
+            .form-title {
+                width: 100%;
+            }
         }
         form {
             .btn-user-signin {
                 background-color: #f28d0f;
                 color: #ffffff;
                 text-transform: capitalize;
-                margin-top: 15px;
                 width: 100%;
             }
             .btn-user-social {
-                margin: 9px 0px;
                 display: flex;
                 align-items: center;
                 justify-content: strech;

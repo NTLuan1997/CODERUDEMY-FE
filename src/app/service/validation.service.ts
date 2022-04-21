@@ -10,6 +10,7 @@ export class ValidationService {
 
   regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   regexPassword = /([A-Za-z]){1,}([#?!@$%^&*]){1,}([A-Za-z]{1,})|([\d]{1,})$/g;
+  regexPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
   constructor() { }
 
@@ -84,6 +85,20 @@ export class ValidationService {
         return null;
       }
       return null;
+    }
+  }
+
+  phone(): ValidatorFn {
+    return (control: AbstractControl): [{key: string} | any] | any => {
+      if(control.value) {
+        if(!this.regexPhone.test(control.value)) {
+          return { "error": "phone", "message": Errors.phone.invalid };
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
     }
   }
 
