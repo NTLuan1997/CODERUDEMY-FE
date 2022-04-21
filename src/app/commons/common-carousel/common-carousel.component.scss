@@ -1,0 +1,22 @@
+.carousel {
+    margin-bottom: 45px;
+    .carousel-indicators {
+        right: auto;
+        left: calc(0px - 190px);
+        bottom: -35px;
+        li {
+            border: none;
+            border-radius: 20px;
+            background-color: #bebebe;
+            height: 7px;
+            width: 45px;
+        }
+    }
+    .carousel-inner {
+        .carousel-item {
+            img {
+                height: 275px;
+            }
+        }
+    }
+}

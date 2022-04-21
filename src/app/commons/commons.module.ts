@@ -8,6 +8,7 @@ import { CommonAnonymousComponent } from './common-anonymous/common-anonymous.co
 import { CommonLoaderComponent } from './common-loader/common-loader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonFormInputComponent } from './common-form-input/common-form-input.component';
+import { CommonCarouselComponent } from './common-carousel/common-carousel.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CommonFormInputComponent } from './common-form-input/common-form-input.
     CommonFooterComponent,
     CommonAnonymousComponent,
     CommonLoaderComponent,
-    CommonFormInputComponent
+    CommonFormInputComponent,
+    CommonCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { CommonFormInputComponent } from './common-form-input/common-form-input.
     CommonHeaderComponent,
     CommonFooterComponent,
     CommonLoaderComponent,
-    CommonFormInputComponent
+    CommonFormInputComponent,
+    CommonCarouselComponent
   ]
 })
 export class CommonsModule { }

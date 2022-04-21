@@ -24,7 +24,6 @@ export class ProductLessonComponent implements OnInit {
         this.course = JSON.parse(String(localStorage.getItem('courseCurrent')));
         this.courseService.coursePost(this.course, EndPoint.course['course-detail'])
         .then((courseDetail) => {
-          console.log(courseDetail);
           this.courseDetail = courseDetail;
         })
         .catch((err) => {

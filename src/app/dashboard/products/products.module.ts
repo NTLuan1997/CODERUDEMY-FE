@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductLessonComponent } from './product-lesson/product-lesson.component';
+import { CommonsModule } from 'src/app/commons/commons.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductLessonComponent } from './product-lesson/product-lesson.componen
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    CommonsModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' }
