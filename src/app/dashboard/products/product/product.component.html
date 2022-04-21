@@ -1,12 +1,16 @@
+<app-common-carousel></app-common-carousel>
 <section class="products">
     <div class="row product-blank" *ngIf="!courseExit">
         <p class="col-12 mb-0">Khóa học hiện trống...</p>
     </div>
     <div class="row align-items-stretch" *ngIf="courseExit">
+        <div class="col-12">
+            <h2 class="product-type-title">Khóa học Font-End</h2>
+        </div>
         <div class="col-3" *ngFor="let item of courses">
-            <a (click)="redirectCourseLesson(item)" class="product-item d-block">
+            <a (click)="redirectCourseLesson(item)" class="product-item d-block" *ngIf="item.type == 'FE'">
                 <div class="wrapper-thumnail">
-                    <img class="img-fluid item-thumbnail" src="{{item.thumbnail}}" alt="course">
+                    <img class="img-fluid item-thumbnail" src="{{item?.thumbnail}}" alt="course">
                     <div class="course-read-more">
                         <p>Chi tiết khóa học</p>
                     </div>
@@ -14,8 +18,9 @@
                 <div class="item-infor">
                     <h2 class="infor-course course--name">{{item.courseName}}</h2>
                     <h3 class="infor-course course-type">
-                        <span>Khóa học : {{item.type}}</span>
-                        <span><i class="fa fa-book" aria-hidden="true"></i> : {{item.unit}}</span>
+                        <span>
+                            <i class="fa fa-book" aria-hidden="true"></i> Khóa học : {{item.unit}}
+                        </span>
                     </h3>
                 </div>
             </a>

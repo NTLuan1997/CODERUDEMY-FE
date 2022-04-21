@@ -11,9 +11,16 @@
             text-transform: capitalize;
         }
     }
+    .product-type-title {
+        border-bottom: 1px solid #0000001a;
+        color: #24292f;
+        font-size: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
     .product-item {
-        border-radius: 8px;
-        box-shadow: 0px 0px 3px 0px #00000014;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px 1px #00000014;
         cursor: pointer;
         height: 100%;
         overflow: hidden;
@@ -21,7 +28,7 @@
             overflow: hidden;
             position: relative;
             .course-read-more {
-                background-color: #00000026;
+                background-color: #bebebe47;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -34,13 +41,18 @@
                 width: 100%;
                 p {
                     border-radius: 25px;
+                    border: 2px solid transparent;
                     background-color: #ffffff;
                     color: #f28d0f;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 600;
                     margin-bottom: 0;
                     padding: 10px;
                     text-transform: capitalize;
+                    transition: all .3s ease;
+                    &:hover {
+                        border: 1px solid #f28d0f;
+                    }
                 }
             }
         }
@@ -57,27 +69,17 @@
                 text-overflow: ellipsis;
                 font-size: 15px;
                 font-weight: 700;
-                letter-spacing: .2px;
+                letter-spacing: .4px;
                 margin: 12px 0px 0px 0px;
                 text-transform: uppercase;
-            }
-            .course-author, .course-description {
-                font-size: 15px;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .course-description {
-                -webkit-line-clamp: 2;
             }
             .course-type {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                font-size: 15px;
+                justify-content: flex-start;
+                font-size: 12px;
                 margin-top: 10px;
+                margin-bottom: 0px;
             }
             h3 {
                 font-size: 16px;
@@ -86,9 +88,12 @@
             }
         }
 
-        &:hover .wrapper-thumnail{
-            .course-read-more{
-                transform: translate(-50%, 0%);
+        &:hover {
+            box-shadow: 0px 2px 5px 1px #00000014;
+            .wrapper-thumnail{
+                .course-read-more{
+                    transform: translate(-50%, 0%);
+                }
             }
         }
     }
