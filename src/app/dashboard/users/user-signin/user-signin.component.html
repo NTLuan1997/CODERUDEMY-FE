@@ -1,40 +1,47 @@
 <div class="user-register">
     <div class="wrapper-register">
-        <h2 class="register--title">Đăng nhập</h2>
+        <h2 class="register--title">
+            <a [routerLink]="['/trang-chu']" class="back-page" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+            <p class="form-title">Đăng nhập</p>
+        </h2>
         <form [formGroup]="signInForm" (submit)="userSignIn()">
             <app-common-form-input
-                Label="Email"
+                Label="Email *"
                 [FormController]="email"
                 [Submit]="submitEvent"
-                (InputChanged)="User.email=$event"
+                (Input)="User.email=$event"
                 Id="user-email"
                 Placeholder="VD: Email@gmail.com"
-                Type="email">
+                Type="email"
+                TypeElement="Input">
             </app-common-form-input>
 
             <app-common-form-input
-                Label="Mật khẩu"
+                Label="Mật khẩu *"
                 [FormController]="password"
                 [Submit]="submitEvent"
-                (InputChanged)="User.password=$event"
+                (Input)="User.password=$event"
                 Id="user-password"
                 Placeholder="Mật khẩu đăng nhập"
-                Type="password">
+                Type="password"
+                TypeElement="Input">
             </app-common-form-input>
 
-            <button type="submit" class="btn btn-user-signin">Đăng nhập</button>
-            <button type="submit" class="btn btn-user-signin btn-user-social">
-                <div class="user-social">
-                    <span><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
-                    <p>Facebook</p>
-                </div>
-            </button>
-            <button type="submit" class="btn btn-user-signin btn-user-social">
-                <div class="user-social">
-                    <span><i class="fa fa-google" aria-hidden="true"></i></span>
-                    <p>Google</p>
-                </div>
-            </button>
+            <div class="d-flex align-items-center justify-content-between">
+                <button type="submit" class="btn btn-submition">Đăng ký</button>
+                <button type="submit" class="btn btn-submition btn-user-social">
+                    <div class="user-social">
+                        <img src="../../../../assets/img/icons/facebook-18px.svg" alt="facebook">
+                        <p>Facebook</p>
+                    </div>
+                </button>
+                <button type="submit" class="btn btn-submition btn-user-social">
+                    <div class="user-social">
+                        <img src="../../../../assets/img/icons/google-18px.svg" alt="google">
+                        <p>Google</p>
+                    </div>
+                </button>
+            </div>
             <div class="user-change-form">
                 <p>Bạn chưa có tài khoản?</p>
                 <a [routerLink]="['/user/register']">Đăng ký</a>

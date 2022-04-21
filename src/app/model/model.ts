@@ -18,8 +18,15 @@ export class User {
     "password": String;
     "status": Boolean;
     "dateOfBirth": Date;
+    "gender": String;
+    "phone": String;
+    "address": String;
     "role": String;
     "courses": Array<any>;
+}
+
+export const commons = {
+    "gender": ["Nam", "Nữ", "Khác"]
 }
 
 export const EndPoint = {
@@ -59,5 +66,8 @@ export const Errors = {
     },
     "password": {
         "invalid": "Mật khẩu phải chứa ký tự 'A-Za-z','#?!@$%^&*' hoặc '0-9'",
+    },
+    "phone": {
+        "invalid": "Số điện thoại không hợp lệ"
     }
 }

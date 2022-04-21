@@ -1,5 +1,5 @@
-<div class="form-group">
-    <label for="user-signin-email">{{ Label }}</label>
+<div class="form-group" *ngIf="TypeElement == 'Input'">
+    <label>{{ Label }}</label>
     <input
         class="form-control"
         [ngClass]="{'is-invalid': isError}"
@@ -9,5 +9,18 @@
         [id]="Id"
         [placeholder]="Placeholder"
         [type]="Type">
+    <small class="form-message" [ngClass]="{'is-error': isError}"></small>
+</div>
+
+<div class="form-group" *ngIf="TypeElement == 'Selector'">
+    <label>{{ Label }}</label>
+    <select 
+        class="custom-select"
+        [ngClass]="{'is-invalid': isError}"
+        [formControl]="FormController"
+        (blur)="blur($event)"
+        (change)="change($event)">
+        <option [value]="item" *ngFor="let item of Options">{{item}}</option>
+    </select>
     <small class="form-message" [ngClass]="{'is-error': isError}"></small>
 </div>

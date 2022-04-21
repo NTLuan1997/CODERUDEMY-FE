@@ -1,61 +1,118 @@
 <div class="user-register">
     <div class="wrapper-register">
-        <h2 class="register--title">Đăng ký</h2>
+        <h2 class="register--title">
+            <a [routerLink]="['/trang-chu']" class="back-page" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+            <p class="form-title">Đăng ký</p>
+        </h2>
         <form [formGroup]="registerForm" (submit)="onSubmit()">
-            
-            <app-common-form-input
-                Label="Họ và tên"
-                [FormController]="userName"
-                [Submit]="submitEvent"
-                (InputChanged)="User['user_name']=$event"
-                Id="user-name"
-                Placeholder="Họ và tên của bạn"
-                Type="text">
-            </app-common-form-input>
+            <div class="row">
+                <div class="col-6">
+                    <app-common-form-input
+                        Label="Họ và tên *"
+                        [FormController]="userName"
+                        [Submit]="submitEvent"
+                        (Input)="user['user_name']=$event"
+                        Id="user-name"
+                        Placeholder="Họ và tên của bạn"
+                        Type="text"
+                        TypeElement="Input">
+                    </app-common-form-input>
 
-            <app-common-form-input
-                Label="Email"
-                [FormController]="email"
-                [Submit]="submitEvent"
-                (InputChanged)="User.email=$event"
-                Id="user-email"
-                Placeholder="VD: Email@gmail.com"
-                Type="email">
-            </app-common-form-input>
+                    <app-common-form-input
+                        Label="Email *"
+                        [FormController]="userEmail"
+                        [Submit]="submitEvent"
+                        (Input)="user.email=$event"
+                        Id="user-email"
+                        Placeholder="VD: Email@gmail.com"
+                        Type="email"
+                        TypeElement="Input">
+                    </app-common-form-input>
 
-            <app-common-form-input
-                Label="Mật khẩu"
-                [FormController]="password"
-                [Submit]="submitEvent"
-                (InputChanged)="User.password=$event"
-                Id="user-password"
-                Placeholder="Nhập mật khẩu"
-                Type="password">
-            </app-common-form-input>
+                    <app-common-form-input
+                        Label="Mật khẩu *"
+                        [FormController]="userPassword"
+                        [Submit]="submitEvent"
+                        (Input)="user.password=$event"
+                        Id="user-password"
+                        Placeholder="Nhập mật khẩu"
+                        Type="password"
+                        TypeElement="Input">
+                    </app-common-form-input>
 
-            <app-common-form-input
-                Label="Ngày sinh"
-                [FormController]="dateOfBirth"
-                [Submit]="submitEvent"
-                (InputChanged)="User.dateOfBirth=$event"
-                Id="user-dateofbirth"
-                Placeholder="Nhập mật khẩu"
-                Type="date">
-            </app-common-form-input>
+                    <app-common-form-input
+                        Label="Nhập lại mật khẩu *"
+                        [FormController]="userConformPassword"
+                        [Submit]="submitEvent"
+                        Id="user-conform-password"
+                        Placeholder="Nhập lại mật khẩu"
+                        Type="password"
+                        TypeElement="Input">
+                    </app-common-form-input>
 
-            <button type="submit" class="btn btn-user-signin">Đăng nhập</button>
-            <button type="submit" class="btn btn-user-signin btn-user-social">
-                <div class="user-social">
-                    <span><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
-                    <p>Facebook</p>
                 </div>
-            </button>
-            <button type="submit" class="btn btn-user-signin btn-user-social">
-                <div class="user-social">
-                    <span><i class="fa fa-google" aria-hidden="true"></i></span>
-                    <p>Google</p>
+                <div class="col-6">
+                    <app-common-form-input
+                        Label="Giới tính *"
+                        [FormController]="userGender"
+                        [Submit]="submitEvent"
+                        (Change)="user.gender=$event"
+                        Id="user-gender"
+                        TypeElement="Selector"
+                        [Options]="options">
+                    </app-common-form-input>
+
+                    <app-common-form-input
+                        Label="Ngày/ tháng/ năm sinh *"
+                        Placeholder="Ngày sinh"
+                        [FormController]="dateOfBirth"
+                        [Submit]="submitEvent"
+                        (Input)="user.dateOfBirth=$event"
+                        Id="user-dateOfBirth"
+                        Type="date"
+                        TypeElement="Input">
+                    </app-common-form-input>
+
+                    <app-common-form-input
+                        Label="Số điện thoại *"
+                        Placeholder="+84"
+                        [FormController]="userPhone"
+                        [Submit]="submitEvent"
+                        (Input)="user.phone=$event"
+                        Id="user-phone"
+                        Type="phone"
+                        TypeElement="Input">
+                    </app-common-form-input>
+
+                    <app-common-form-input
+                        Label="Địa chỉ liên hệ *"
+                        Placeholder="Địa chỉ"
+                        [FormController]="userAddress"
+                        [Submit]="submitEvent"
+                        (Input)="user.address=$event"
+                        Id="user-address"
+                        Type="text"
+                        TypeElement="Input">
+                    </app-common-form-input>
                 </div>
-            </button>
+
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between">
+                <button type="submit" class="btn btn-submition">Đăng ký</button>
+                <button type="submit" class="btn btn-submition btn-user-social">
+                    <div class="user-social">
+                        <span><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
+                        <p>Facebook</p>
+                    </div>
+                </button>
+                <button type="submit" class="btn btn-submition btn-user-social">
+                    <div class="user-social">
+                        <span><i class="fa fa-google" aria-hidden="true"></i></span>
+                        <p>Google</p>
+                    </div>
+                </button>
+            </div>
             <div class="user-change-form">
                 <p>Bạn đã có tài khoản?</p>
                 <a [routerLink]="['/user/signin']">Đăng nhập</a>

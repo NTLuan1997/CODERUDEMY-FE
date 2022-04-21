@@ -21,6 +21,29 @@
 
 }
 
+// BUTTON
+.btn-submition {
+    background-color: #f28d0fb3;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-top: 15px;
+    min-width: 200px;
+    &:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+}
+
+.back-page {
+    color: #f28d0f;
+    font-size: 18px;
+    margin-right: 5px;
+    text-decoration: none;
+    &:hover {
+        color: #e68307;
+    }
+}
+
 // PAGE DETAIL
 .detail-course {
     border-radius: 5px;
