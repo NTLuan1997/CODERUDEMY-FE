@@ -6,7 +6,7 @@ import { ProductLessonComponent } from './product-lesson/product-lesson.componen
 
 const routes: Routes = [
   { path: "", component: ProductComponent },
-  { path: "chi-tiet-khoa-hoc/noi-dung/:id", component: ProductDetailComponent },
+  { path: "chi-tiet-khoa-hoc/noi-dung", component: ProductDetailComponent },
   { path: "chi-tiet-khoa-hoc", component: ProductLessonComponent }
 ];
 

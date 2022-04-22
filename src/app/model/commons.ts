@@ -13,7 +13,7 @@ class CourseInformation {
     }
 
     set(course: Course) {
-        localStorage.setItem("courseCurrent", JSON.stringify(course));
+        localStorage.setItem("Course", JSON.stringify(course));
         this.course = course;
     }
 }

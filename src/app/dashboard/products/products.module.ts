@@ -6,13 +6,15 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductLessonComponent } from './product-lesson/product-lesson.component';
 import { CommonsModule } from 'src/app/commons/commons.module';
+import { TransformPipe } from 'src/app/pipes/transform.pipe';
 
 
 @NgModule({
   declarations: [
     ProductComponent,
     ProductDetailComponent,
-    ProductLessonComponent
+    ProductLessonComponent,
+    TransformPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,11 @@ import { CommonsModule } from 'src/app/commons/commons.module';
     CommonsModule
   ],
   providers: [
+    TransformPipe,
     { provide: APP_BASE_HREF, useValue: '/' }
+  ],
+  exports: [
+    TransformPipe
   ]
 })
 export class ProductsModule { }

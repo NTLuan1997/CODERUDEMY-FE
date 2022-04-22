@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { courseInfor } from 'src/app/model/commons';
 import { Course, EndPoint } from 'src/app/model/model';
 import { CourseService } from 'src/app/service/course.service';
@@ -14,30 +15,41 @@ export class ProductLessonComponent implements OnInit {
   lessonExist: Boolean = true;
 
   constructor(
-    private courseService: CourseService
+    private courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    if(!Object.values(courseInfor.get()).length) {
-      if(localStorage.getItem('courseCurrent')) {
-        this.lessonExist = true;
-        this.course = JSON.parse(String(localStorage.getItem('courseCurrent')));
-        this.courseService.coursePost(this.course, EndPoint.course['course-detail'])
-        .then((courseDetail) => {
-          this.courseDetail = courseDetail;
-        })
-        .catch((err) => {
-          throw err;
-        })
+    if(Object.values(courseInfor.get()).length) {
+        this.getCourse();
 
+    } else {
+      if(localStorage.getItem("Course")) {
+        courseInfor.set(JSON.parse(String(localStorage.getItem("Course"))));
+        this.getCourse();
+        
       } else {
         this.lessonExist = false;
-
       }
-    } else {
-      this.lessonExist = true;
-      this.course = courseInfor.get();
     }
+  }
+
+  getCourse() {
+    this.lessonExist = true;
+    this.course = courseInfor.get();
+    this.courseService.coursePost(this.course, EndPoint.course['course-detail'])
+    .then((courseDetail) => {
+      localStorage.setItem("Unit", JSON.stringify(courseDetail));
+      this.courseDetail = courseDetail;
+    })
+    .catch((err) => {
+      throw err;
+    })
+  }
+
+  navigationLesson(lesson: any) {
+    localStorage.setItem("Lesson", JSON.stringify(lesson));
+    this.router.navigate(['/chi-tiet-khoa-hoc/noi-dung']);
   }
 
 }
