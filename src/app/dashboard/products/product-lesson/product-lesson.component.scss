@@ -5,7 +5,7 @@
         align-items: stretch;
         justify-content: flex-start;
         min-height: 230px;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         padding-left: 20px;
         width: 100%;
         .lesson--header-infor {
@@ -19,8 +19,8 @@
                 text-transform: uppercase;
             }
             .header-infor--description {
-                font-size: 16px;
-                width: 800px;
+                font-size: 15px;
+                letter-spacing: .3px;
             }
             .header-infor--meta {
                 font-size: 16px;
@@ -62,11 +62,19 @@
             }
             .card-body {
                 ul {
-                    padding-left: 20px;
+                    padding-left: 22px;
+                    margin-bottom: 0px;
                     li {
+                        &:not(:last-child) {
+                            margin-bottom: 5px;
+                        }
                         a {
                             display: block;
                             color: #3c3c3c;
+                            cursor: pointer;
+                            font-size: 15px;
+                            font-weight: 500;
+                            letter-spacing: .3px;
                             margin-bottom: 3px;
                             &::before {
                                 display: inline-block;

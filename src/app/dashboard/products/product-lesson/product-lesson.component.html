@@ -4,33 +4,36 @@
 </ul>
 
 <div class="product-lesson">
+
     <div class="product-lesson--header">
-        <div class="lesson--header-infor">
-            <h2 class="header-infor--course_name">{{course.courseName}}</h2>
-            <p class="header-infor--description">{{course.description}}</p>
-            <div class="header-infor--meta">
-                <span>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    Last update: {{course.updateDate}}
-                </span>
-                <span>
-                    <i class="fa fa-language" aria-hidden="true"></i>
-                    Ngôn ngữ: Tiếng Việt
-                </span>
-                <span>
-                    <i class="fa fa-tencent-weibo" aria-hidden="true"></i>
-                    Tác giả: {{course.author}}
-                </span>
+        <div class="row">
+            <div class="col-9 lesson--header-infor">
+                <h2 class="header-infor--course_name">{{course.courseName}}</h2>
+                <p class="header-infor--description">{{course.description}}</p>
+                <div class="header-infor--meta">
+                    <span>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Last update: {{course.updateDate}}
+                    </span>
+                    <span>
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                        Ngôn ngữ: Tiếng Việt
+                    </span>
+                    <span>
+                        <i class="fa fa-tencent-weibo" aria-hidden="true"></i>
+                        Tác giả: {{course.author}}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-9">
             <div class="lesson-blank" *ngIf="!lessonExist">
                 <p>Bài học hiện trống...</p>
             </div>
         </div>
-
         <div class="col-9" *ngIf="lessonExist">
             <div class="accordion" id="accordionExample">
                 <div class="card" *ngFor="let unit of courseDetail?.course?.unit">
@@ -43,92 +46,19 @@
                             </a>
                         </h2>
                     </div>
-
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="list-unstyled">
-
-                                <li *ngFor="let lesson of unit.lessons">
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
+                                <li *ngFor="let lesson of unit.lessons" class="card-body--lesson">
+                                    <a (click)="navigationLesson(lesson)">
                                         {{lesson.lessonName}}
                                     </a>
                                 </li>
-
-                                <!-- <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Cài đặt môi trường làm việc
-                                    </a>
-                                </li> -->
-                                <!-- <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Viết trương trình đầu tiên
-                                    </a>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <a href="#" class="btn-lesson collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                Các thẻ text trong HTML
-                            </a>
-                        </h2>
-                    </div>
-
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Thẻ chứa văn bản trong HTML
-                                    </a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Thẻ chứa nội dung tiêu đề
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <a href="#" class="btn-lesson collapsed" data-toggle="collapse" data-target="#collapseThree"
-                                aria-expanded="false" aria-controls="collapseThree">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                Các thẻ liên kết trong HTML
-                            </a>
-                        </h2>
-                    </div>
-
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Khái niệm về thẻ liên kết
-                                    </a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['/khoa-hoc/chi-tiet-khoa-hoc/noi-dung', 0]">
-                                        Thẻ tạo liên kết cơ bản
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
         </div>
         <div class="col-3">

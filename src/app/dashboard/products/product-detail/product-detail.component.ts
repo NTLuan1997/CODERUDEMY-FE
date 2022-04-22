@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/model/model';
 import { courseInfor } from 'src/app/model/commons';
+import { TransformPipe } from 'src/app/pipes/transform.pipe';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,13 +11,14 @@ import { courseInfor } from 'src/app/model/commons';
 })
 export class ProductDetailComponent implements OnInit {
   course: Course = new Course();
+  lesson: any;
   
   constructor(
-    private router: Router,
+      
   ) { }
 
   ngOnInit(): void {
-    this.course = !Object.keys(courseInfor.get()).length ? JSON.parse(String(localStorage.getItem('courseCurrent'))) : courseInfor.get();
+    this.lesson = JSON.parse(String(localStorage.getItem('lesson'))) || undefined;
   }
 
 }
