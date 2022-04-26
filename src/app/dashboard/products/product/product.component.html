@@ -11,9 +11,7 @@
             <a (click)="redirectCourseLesson(item)" class="product-item d-block" *ngIf="item.type == 'FE'">
                 <div class="wrapper-thumnail">
                     <img class="img-fluid item-thumbnail" src="{{item?.thumbnail}}" alt="course">
-                    <div class="course-read-more">
-                        <p>Chi tiết khóa học</p>
-                    </div>
+                    <div class="course-read-more"><p>Chi tiết khóa học</p></div>
                 </div>
                 <div class="item-infor">
                     <h2 class="infor-course course--name">{{item.courseName}}</h2>

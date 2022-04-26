@@ -7,37 +7,11 @@
     <h2 class="detail-course--name">{{ lesson.lessonName }}</h2>
     <div class="detail-course--info">
         <p><i class="fa fa-gg" aria-hidden="true"></i>{{'FE' | transform:'Type'}}</p>
-        <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ lesson.createDate }}</p>
+        <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ lesson.createDate | transform:'Date' }}</p>
 
     </div>
-    <img class="detail-course--thumbnail" src="../../../../assets/img/product/course_00.jpg" alt="thumbnail">
-    <p class="detail-course--content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam iusto cupiditate
-        non.
-        Odio accusantium voluptatum quasi voluptatem pariatur doloribus nesciunt consequuntur culpa nemo ad dolore non
-        inventore rem, officiis excepturi.
-        Veniam labore reiciendis, minus aperiam voluptatem, totam ab porro dolore voluptates, non itaque vero. Vitae
-        adipisci culpa deleniti fugiat ab fugit? Repellat reiciendis in recusandae laborum perspiciatis, sapiente ex
-        vitae!
-        Nam voluptatibus quae distinctio excepturi, fuga at sint quo alias maxime magnam. Vitae facere libero nisi nemo
-        possimus dignissimos exercitationem, modi sint minus, omnis beatae sunt, nam fugit accusantium maxime?
-        Praesentium alias esse ex necessitatibus soluta nisi sunt, recusandae sequi voluptatum asperiores earum veniam
-        cum et delectus vero totam! Fugiat, rerum provident! Magni non eum ipsam beatae harum! Dolores, quaerat!
-        Ex facilis corrupti sit pariatur totam cum nihil temporibus laudantium inventore ab incidunt aperiam nostrum
-        expedita, fuga numquam quos quam mollitia laboriosam quasi! Laborum architecto nemo recusandae animi eum illo!
-        Sequi inventore nesciunt asperiores natus doloremque numquam reiciendis et, harum non assumenda facere ea earum
-        quidem quia fuga expedita temporibus quasi pariatur ipsa laudantium a! Dignissimos saepe voluptatum nam
-        sapiente.
-        Sit est provident porro assumenda! Atque quaerat dignissimos dolorum nam iste numquam voluptatum, animi sunt
-        fuga perferendis illo non architecto illum possimus nostrum in, dolore magni quis id sit eum!
-        Minima rerum atque sunt optio explicabo porro impedit, voluptatibus tempora vero quo? Error in voluptatibus
-        animi fuga adipisci quisquam, fugiat quaerat. Aspernatur, provident accusamus quae ratione consequatur maiores
-        voluptates voluptatem?
-        Similique, eos ipsum? A, accusamus doloremque sapiente esse illo eveniet amet, omnis minima tenetur quam
-        doloribus ipsum laborum aperiam nisi culpa vel obcaecati. Deserunt sequi atque deleniti laudantium amet
-        eligendi?
-        Similique blanditiis distinctio perspiciatis quasi, non sequi temporibus beatae sit saepe dolore voluptatibus
-        deleniti repellat, ratione repellendus, minus natus veritatis at! Dicta ea laboriosam quia blanditiis sint
-        similique? Corrupti, repellat.</p>
+    <img class="detail-course--thumbnail" [src]="lesson.thumbnail" alt="thumbnail">
+    <p class="detail-course--content">{{ lesson.lessonContent }}</p>
 
-    <p class="detail-aythor">Tác giả: Nguyễn Phương Duy</p>
+    <!-- <p class="detail-aythor">Tác giả: Nguyễn Phương Duy</p> -->
 </div>

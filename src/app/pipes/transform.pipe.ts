@@ -5,10 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TransformPipe implements PipeTransform {
   transform(value: any, args: any) {
-    console.log(args);
     if(value) {
       if(args == 'Type') {
         value = this.Type(value);
+      }
+
+      if(args == "Date") {
+        value = this.Date(value);
       }
     }
     return value;
@@ -22,6 +25,11 @@ export class TransformPipe implements PipeTransform {
     if(value == 'BE') {
       return 'Back-End';
     }
+  }
+
+  Date(value: any): any {
+    let convertDate = new Date(value);
+    return convertDate.toLocaleString();
   }
 
 }

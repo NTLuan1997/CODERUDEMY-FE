@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/model/model';
 import { courseInfor } from 'src/app/model/commons';
 import { TransformPipe } from 'src/app/pipes/transform.pipe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,6 +20,8 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.lesson = JSON.parse(String(localStorage.getItem('lesson'))) || undefined;
+    let url = `${environment.urlThumbnail}${this.lesson.thumbnail.replace('img', 'course')}`;
+    this.lesson.thumbnail = url;
   }
 
 }
