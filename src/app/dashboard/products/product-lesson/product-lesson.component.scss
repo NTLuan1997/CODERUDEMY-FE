@@ -34,6 +34,17 @@
                     }
                 }
             }
+            .expend-all-lesson {
+                display: flex;
+                align-items: center;
+                .form-check-input {
+                    accent-color: #d57600;
+                }
+                .form-check-label {
+                    font-size: 13px;
+                    margin-left: -3px;
+                }
+            }
         }
     }
     .lesson-blank {
@@ -42,51 +53,10 @@
         justify-content: center;
         height: 50vh;
         p {
-            font-size: 30px;
+            font-size: 25px;
             font-weight: 600;
             text-align: center;
             text-transform: capitalize;
-        }
-    }
-    .accordion {
-        .card {
-            .card-header {
-                background-color: #f7f9fa;
-                border-bottom: 1px solid #d1d7dc;
-                .btn-lesson {
-                    color: #031b4f;
-                    font-size: 16px;
-                    font-weight: 700;
-                    text-transform: capitalize;
-                }
-            }
-            .card-body {
-                ul {
-                    padding-left: 22px;
-                    margin-bottom: 0px;
-                    li {
-                        &:not(:last-child) {
-                            margin-bottom: 5px;
-                        }
-                        a {
-                            display: block;
-                            color: #3c3c3c;
-                            cursor: pointer;
-                            font-size: 15px;
-                            font-weight: 500;
-                            letter-spacing: .3px;
-                            margin-bottom: 3px;
-                            &::before {
-                                display: inline-block;
-                                content: "\f02d";
-                                font-family: "FontAwesome"; 
-                                font-weight: 900;
-                                margin-right: 5px;
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
     .lesson-registry {
@@ -159,6 +129,47 @@
             .share-more--description {
                 font-size: 14px;
                 margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.wrapper-collapse {
+    .unit-component {
+        border: 1px solid #ececec;
+        padding: 15px;
+        &:not(:first-child) {
+            border-top: unset;
+        }
+        .unit-component--name {
+            color: #000000;
+            font-size: 18px;
+            text-transform: capitalize;
+            i.fa {
+                margin-right: 5px;
+            }
+            a {
+                color: inherit;
+                cursor: pointer;
+            }
+        }
+        .unit-lesson-component{
+            margin-bottom: 0px;
+            list-style-type: none;
+            padding-left: 25px;
+            transition: all .3s ease;
+            &.lesson-close {
+                overflow: hidden;
+                height: 0px;
+            }
+            li {
+                margin-bottom: 5px;
+                a {
+                    color: #00000099;
+                    cursor: pointer;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
             }
         }
     }

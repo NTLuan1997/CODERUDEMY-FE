@@ -6,14 +6,14 @@
 <div class="product-lesson">
 
     <div class="product-lesson--header">
-        <div class="row">
+        <div class="row w-100">
             <div class="col-9 lesson--header-infor">
                 <h2 class="header-infor--course_name">{{course.courseName}}</h2>
                 <p class="header-infor--description">{{course.description}}</p>
                 <div class="header-infor--meta">
                     <span>
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        Last update: {{course.updateDate}}
+                        Last update: {{course.updateDate | transform:'Date'}}
                     </span>
                     <span>
                         <i class="fa fa-language" aria-hidden="true"></i>
@@ -34,33 +34,26 @@
                 <p>Bài học hiện trống...</p>
             </div>
         </div>
+        
         <div class="col-9" *ngIf="lessonExist">
-            <div class="accordion" id="accordionExample">
-                <div class="card" *ngFor="let unit of courseDetail?.course?.unit">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <a href="#" class="btn-lesson" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                {{ unit.unitName }}
+            <div class="wrapper-collapse">
+                <div #unit class="unit-component" *ngFor="let unit of courseDetail?.units, first as isFirst">
+                    <h2 class="unit-component--name">
+                        <i class="fa fa-chevron-down" [ngClass]="{'fa-chevron-down': isFirst , 'fa-chevron-up': !isFirst}" aria-hidden="true"></i>
+                        <a attr.data-target="#{{unit._id}}" (click)="collapse($event)">{{ unit.unitName }}</a>
+                    </h2>
+                    <ul class="unit-lesson-component" [ngClass]="{'lesson-close': !isFirst}" attr.id="{{unit._id}}">
+                        <li *ngFor="let lesson of unit?.lessons">
+                            <a (click)="navigationLesson(lesson)">
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                {{ lesson.lessonName }}
                             </a>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li *ngFor="let lesson of unit.lessons" class="card-body--lesson">
-                                    <a (click)="navigationLesson(lesson)">
-                                        {{lesson.lessonName}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+
         <div class="col-3">
             <div class="lesson-registry">
                 <div class="registry-wrapper">
@@ -76,20 +69,14 @@
                             <ul class="infor--course-content list-unstyled">
                                 <li>
                                     <p>
-                                        <i class="fa fa-file-o" aria-hidden="true"></i>
-                                        <span>Số bài viết của khóa học - 40 bài</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
                                         <i class="fa fa-ioxhost" aria-hidden="true"></i>
-                                        <span>Những chủ đề khóa học - 5 phần</span>
+                                        <span>Những chủ đề khóa học - {{courseDetail?.unit || 0}} phần</span>
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <span>Thời gian khóa học - 3 ngày</span>
+                                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                                        <span>Số bài viết của khóa học - {{lesson}} bài</span>
                                     </p>
                                 </li>
                                 <li>
