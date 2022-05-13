@@ -15,14 +15,14 @@ export class UserRegisterComponent implements OnInit {
   user: User = new User();
   registerForm: FormGroup = new FormGroup({});
   submitEvent: Boolean = false;
-  userName: FormControl;
-  userEmail: FormControl;
-  userPassword: FormControl;
-  userConformPassword: FormControl;
-  userGender: FormControl;
-  dateOfBirth: FormControl;
-  userPhone: FormControl;
-  userAddress: FormControl;
+  Name: FormControl;
+  Email: FormControl;
+  Password: FormControl;
+  ConformPassword: FormControl;
+  Gender: FormControl;
+  DateOfBirth: FormControl;
+  Phone: FormControl;
+  Address: FormControl;
   options: Array<string> = commons.gender;
 
   constructor(
@@ -32,15 +32,16 @@ export class UserRegisterComponent implements OnInit {
     private router: Router,
     private cookie: CookieService
   ) {
-    this.userName = new FormControl('', [this.valid.required()]);
-    this.userEmail = new FormControl('', [this.valid.required(), this.valid.email()]);
-    this.userPassword = new FormControl('', [this.valid.required(), this.valid.minLength(6),
+    this.user.Type = "Register-account";
+    this.Name = new FormControl('', [this.valid.required()]);
+    this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
+    this.Password = new FormControl('', [this.valid.required(), this.valid.minLength(6),
                                             this.valid.maxLength(15), this.valid.password()]);
-    this.userConformPassword = new FormControl();
-    this.userGender = new FormControl('', [this.valid.required()]);
-    this.dateOfBirth = new FormControl('', [this.valid.required(), this.valid.dateOfBirth(0, 80)]);
-    this.userPhone = new FormControl('', [this.valid.required(), this.valid.phone()]);
-    this.userAddress = new FormControl('', [this.valid.required()]);
+    this.ConformPassword = new FormControl('', [this.valid.required(), this.valid.confirmPassword()]);
+    this.Gender = new FormControl('', [this.valid.required()]);
+    this.DateOfBirth = new FormControl('', [this.valid.required(), this.valid.dateOfBirth(0, 80)]);
+    this.Phone = new FormControl('', [this.valid.required(), this.valid.phone()]);
+    this.Address = new FormControl('', [this.valid.required()]);
   }
 
   ngOnInit(): void {
@@ -49,30 +50,26 @@ export class UserRegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
-      userName: this.userName,
-      userEmail: this.userEmail,
-      userPassword: this.userPassword,
-      userConformPassword: this.userConformPassword,
-      userGender: this.userGender,
-      dateOfBirth: this.dateOfBirth,
-      userPhone: this.userPhone,
-      userAddress: this.userAddress
+      userName: this.Name,
+      userEmail: this.Email,
+      userPassword: this.Password,
+      userConformPassword: this.ConformPassword,
+      userGender: this.Gender,
+      dateOfBirth: this.DateOfBirth,
+      userPhone: this.Phone,
+      userAddress: this.Address
     })
   }
 
   onSubmit() {
     this.submitEvent = true;
     if (this.registerForm.valid) {
-      this.user.status = true;
-      this.user.role = "Member";
-      this.user.courses = [];
-
       this.userService.usertPost(this.user, EndPoint.user.register)
         .then((data: any) => {
           if (data) {
-            this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
-            this.router.navigate(["/"]);
-
+            // this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+            // this.router.navigate(["/"]);
+            console.log(data);
           } else {
             console.log(data.message);
           }

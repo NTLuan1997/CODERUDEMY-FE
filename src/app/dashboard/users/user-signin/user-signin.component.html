@@ -7,10 +7,10 @@
         <form [formGroup]="signInForm" (submit)="userSignIn()">
             <app-common-form-input
                 Label="Email *"
-                [FormController]="email"
+                [FormController]="Email"
                 [Submit]="submitEvent"
-                (Input)="User.email=$event"
-                Id="user-email"
+                (Input)="user.Email=$event"
+                Id="Email"
                 Placeholder="VD: Email@gmail.com"
                 Type="email"
                 TypeElement="Input">
@@ -18,10 +18,10 @@
 
             <app-common-form-input
                 Label="Mật khẩu *"
-                [FormController]="password"
+                [FormController]="Password"
                 [Submit]="submitEvent"
-                (Input)="User.password=$event"
-                Id="user-password"
+                (Input)="user.Password=$event"
+                Id="Password"
                 Placeholder="Mật khẩu đăng nhập"
                 Type="password"
                 TypeElement="Input">

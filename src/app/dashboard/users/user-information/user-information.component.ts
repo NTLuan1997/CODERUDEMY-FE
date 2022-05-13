@@ -12,24 +12,24 @@ export class UserInformationComponent implements OnInit {
   user:User = new User();
   submitEvent: Boolean = false;
   profileForm: FormGroup = new FormGroup({});
-  userName: FormControl;
-  userEmail: FormControl;
-  userGender: FormControl;
-  dateOfBirth: FormControl;
-  userPhone: FormControl;
-  userAddress: FormControl;
+  Name: FormControl;
+  Email: FormControl;
+  Gender: FormControl;
+  DateOfBirth: FormControl;
+  Phone: FormControl;
+  Address: FormControl;
   options: Array<string> = commons.gender;
 
   constructor(
     private fb: FormBuilder,
     private valid: ValidationService,
   ) {
-    this.userName = new FormControl('', [this.valid.required()]);
-    this.userEmail = new FormControl('', [this.valid.required(), this.valid.email()]);
-    this.userGender = new FormControl('', [this.valid.required()]);
-    this.dateOfBirth = new FormControl('', [this.valid.required(), this.valid.dateOfBirth(0, 80)]);
-    this.userPhone = new FormControl('', [this.valid.required(), this.valid.phone()]);
-    this.userAddress = new FormControl('', [this.valid.required()]);
+    this.Name = new FormControl('', [this.valid.required()]);
+    this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
+    this.Gender = new FormControl('', [this.valid.required()]);
+    this.DateOfBirth = new FormControl('', [this.valid.required(), this.valid.dateOfBirth(0, 80)]);
+    this.Phone = new FormControl('', [this.valid.required(), this.valid.phone()]);
+    this.Address = new FormControl('', [this.valid.required()]);
   }
 
   ngOnInit(): void {
@@ -38,12 +38,12 @@ export class UserInformationComponent implements OnInit {
 
   createForm() {
     this.profileForm = this.fb.group({
-      userName : this.userName,
-      userEmail: this.userEmail,
-      userGender: this.userGender,
-      dateOfBirth: this.dateOfBirth,
-      userPhone: this.userPhone,
-      userAddress: this.userAddress
+      userName : this.Name,
+      userEmail: this.Email,
+      userGender: this.Gender,
+      dateOfBirth: this.DateOfBirth,
+      userPhone: this.Phone,
+      userAddress: this.Address
     })
   }
 
