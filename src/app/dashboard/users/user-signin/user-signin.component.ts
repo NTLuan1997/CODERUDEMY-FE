@@ -12,11 +12,11 @@ import { ValidationService } from 'src/app/service/validation.service';
   styleUrls: ['./user-signin.component.scss', '../user-register/user-register.component.scss']
 })
 export class UserSigninComponent implements OnInit {
-  User = new User();
+  user:User = new User();
   signInForm: FormGroup = new FormGroup({});
   submitEvent: Boolean = false;
-  email: FormControl;
-  password: FormControl;
+  Email: FormControl;
+  Password: FormControl;
 
   constructor(
     private fb: FormBuilder,
@@ -25,8 +25,8 @@ export class UserSigninComponent implements OnInit {
     private router: Router,
     private cookie: CookieService
   ) {
-    this.email = new FormControl(this.User.email, [this.valid.required(), this.valid.email()]);
-    this.password = new FormControl(this.User.password,
+    this.Email = new FormControl(this.user.Email, [this.valid.required(), this.valid.email()]);
+    this.Password = new FormControl(this.user.Password,
                     [this.valid.required(), this.valid.minLength(6),
                     this.valid.maxLength(15), this.valid.password()]);
   }
@@ -37,15 +37,15 @@ export class UserSigninComponent implements OnInit {
 
   createForm() {
     this.signInForm = this.fb.group({
-      email: this.email,
-      password: this.password
+      email: this.Email,
+      password: this.Password
     })
   }
 
   userSignIn() {
     this.submitEvent = true;
     if(this.signInForm.valid) {
-      this.userService.usertPost(this.User, EndPoint.user.signIn)
+      this.userService.usertPost(this.user, EndPoint.user.signIn)
       .then((data:any) => {
         if(data.status) {
             this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });

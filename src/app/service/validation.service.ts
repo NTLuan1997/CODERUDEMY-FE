@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Errors } from "../model/model";
 import * as moment from 'moment';
 
@@ -87,6 +87,28 @@ export class ValidationService {
       return null;
     }
   }
+
+  confirmPassword(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      let group: any = control.parent;
+      let password = group?.controls["userPassword"];
+      let conformPassword = group?.controls["userConformPassword"];
+
+      if(password?.value !== conformPassword?.value) {
+        return { "error": "password", "message": Errors.password.conformPassword };
+      }
+      return null;
+    }
+  }
+
+  // confirmPassword: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+  //   let password = group.get("userPassword");
+  //   let conformPassword = group.get("userConformPassword");
+  //   if(password !== conformPassword) {
+  //     return { "error": "password", "message": Errors.password.conformPassword };
+  //   }
+  //   return null;
+  // }
 
   phone(): ValidatorFn {
     return (control: AbstractControl): [{key: string} | any] | any => {

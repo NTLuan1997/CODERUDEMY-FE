@@ -4,15 +4,16 @@
             <a [routerLink]="['/trang-chu']" class="back-page" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
             <p class="form-title">Đăng ký</p>
         </h2>
+
         <form [formGroup]="registerForm" (submit)="onSubmit()">
             <div class="row">
                 <div class="col-6">
                     <app-common-form-input
                         Label="Họ và tên *"
-                        [FormController]="userName"
+                        [FormController]="Name"
                         [Submit]="submitEvent"
-                        (Input)="user['user_name']=$event"
-                        Id="user-name"
+                        (Input)="user.Name=$event"
+                        Id="Name"
                         Placeholder="Họ và tên của bạn"
                         Type="text"
                         TypeElement="Input">
@@ -20,10 +21,10 @@
 
                     <app-common-form-input
                         Label="Email *"
-                        [FormController]="userEmail"
+                        [FormController]="Email"
                         [Submit]="submitEvent"
-                        (Input)="user.email=$event"
-                        Id="user-email"
+                        (Input)="user.Email=$event"
+                        Id="Email"
                         Placeholder="VD: Email@gmail.com"
                         Type="email"
                         TypeElement="Input">
@@ -31,10 +32,10 @@
 
                     <app-common-form-input
                         Label="Mật khẩu *"
-                        [FormController]="userPassword"
+                        [FormController]="Password"
                         [Submit]="submitEvent"
-                        (Input)="user.password=$event"
-                        Id="user-password"
+                        (Input)="user.Password=$event"
+                        Id="Password"
                         Placeholder="Nhập mật khẩu"
                         Type="password"
                         TypeElement="Input">
@@ -42,9 +43,9 @@
 
                     <app-common-form-input
                         Label="Nhập lại mật khẩu *"
-                        [FormController]="userConformPassword"
+                        [FormController]="ConformPassword"
                         [Submit]="submitEvent"
-                        Id="user-conform-password"
+                        Id="conform-password"
                         Placeholder="Nhập lại mật khẩu"
                         Type="password"
                         TypeElement="Input">
@@ -54,10 +55,10 @@
                 <div class="col-6">
                     <app-common-form-input
                         Label="Giới tính *"
-                        [FormController]="userGender"
+                        [FormController]="Gender"
                         [Submit]="submitEvent"
-                        (Change)="user.gender=$event"
-                        Id="user-gender"
+                        (Change)="user.Gender=$event"
+                        Id="Gender"
                         TypeElement="Selector"
                         [Options]="options">
                     </app-common-form-input>
@@ -65,10 +66,10 @@
                     <app-common-form-input
                         Label="Ngày/ tháng/ năm sinh *"
                         Placeholder="Ngày sinh"
-                        [FormController]="dateOfBirth"
+                        [FormController]="DateOfBirth"
                         [Submit]="submitEvent"
-                        (Input)="user.dateOfBirth=$event"
-                        Id="user-dateOfBirth"
+                        (Input)="user.DateOfBirth=$event"
+                        Id="DateOfBirth"
                         Type="date"
                         TypeElement="Input">
                     </app-common-form-input>
@@ -76,10 +77,10 @@
                     <app-common-form-input
                         Label="Số điện thoại *"
                         Placeholder="+84"
-                        [FormController]="userPhone"
+                        [FormController]="Phone"
                         [Submit]="submitEvent"
-                        (Input)="user.phone=$event"
-                        Id="user-phone"
+                        (Input)="user.Phone=$event"
+                        Id="Phone"
                         Type="phone"
                         TypeElement="Input">
                     </app-common-form-input>
@@ -87,10 +88,10 @@
                     <app-common-form-input
                         Label="Địa chỉ liên hệ *"
                         Placeholder="Địa chỉ"
-                        [FormController]="userAddress"
+                        [FormController]="Address"
                         [Submit]="submitEvent"
-                        (Input)="user.address=$event"
-                        Id="user-address"
+                        (Input)="user.Address=$event"
+                        Id="Address"
                         Type="text"
                         TypeElement="Input">
                     </app-common-form-input>

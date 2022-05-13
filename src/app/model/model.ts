@@ -13,16 +13,17 @@ export class Course {
 }
 
 export class User {
-    "user_name": String;
-    "email": String;
-    "password": String;
-    "status": Boolean;
-    "dateOfBirth": Date;
-    "gender": String;
-    "phone": String;
-    "address": String;
-    "role": String;
-    "courses": Array<any>;
+    "Code": String;
+    "Name": String;
+    "Email": String;
+    "Password": String;
+    "Gender": String;
+    "DateOfBirth": Date;
+    "Phone": String;
+    "Address": String;
+    "Type": String;
+    "Thumbnail": String;
+    "registerCourse": []
 }
 
 export const commons = {
@@ -31,7 +32,7 @@ export const commons = {
 
 export const EndPoint = {
     "user": {
-        "register": "/API/user/client-register",
+        "register": "/API/client/client",
         "signIn": "/API/user/client-signIn"
     },
     "course": {
@@ -66,6 +67,7 @@ export const Errors = {
     },
     "password": {
         "invalid": "Mật khẩu phải chứa ký tự 'A-Za-z','#?!@$%^&*' hoặc '0-9'",
+        "conformPassword": "Password nhập lại không hợp lệ"
     },
     "phone": {
         "invalid": "Số điện thoại không hợp lệ"
