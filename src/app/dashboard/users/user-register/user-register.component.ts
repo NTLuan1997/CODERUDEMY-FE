@@ -50,14 +50,14 @@ export class UserRegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
-      userName: this.Name,
-      userEmail: this.Email,
-      userPassword: this.Password,
-      userConformPassword: this.ConformPassword,
-      userGender: this.Gender,
-      dateOfBirth: this.DateOfBirth,
-      userPhone: this.Phone,
-      userAddress: this.Address
+      Name: this.Name,
+      Email: this.Email,
+      Password: this.Password,
+      ConformPassword: this.ConformPassword,
+      Gender: this.Gender,
+      DateOfBirth: this.DateOfBirth,
+      Phone: this.Phone,
+      Address: this.Address
     })
   }
 
@@ -67,17 +67,27 @@ export class UserRegisterComponent implements OnInit {
       this.userService.usertPost(this.user, EndPoint.user.register)
         .then((data: any) => {
           if (data) {
-            // this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
-            // this.router.navigate(["/"]);
-            console.log(data);
-          } else {
-            console.log(data.message);
+            if(data.client.status) {
+              localStorage.setItem("User", JSON.stringify(data.client.doc));
+              this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+              
+            } else {
+              this.validator(data);
+            }
           }
+        })
+        .then(() => {
+          this.router.navigate(["/"]);
+          
         })
         .catch((err) => {
           throw err;
         })
     }
+  }
+
+  validator(parameter: any) {
+    this.registerForm.controls["Email"].setErrors(this.valid.response(parameter));
   }
 
 }

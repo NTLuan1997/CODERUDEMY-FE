@@ -49,6 +49,9 @@ export const EndPoint = {
 }
 
 export const Errors = {
+    "account": {
+        "exists": "Email đã được đăng ký"
+    },
     "dateOfBirth": {
         "invalid": "Tuổi người dùng không hợp lệ",
         "minAge": "Tuổi người dùng phải lớn hơn",
