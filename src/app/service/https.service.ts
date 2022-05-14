@@ -36,8 +36,8 @@ export class HttpsService<T> {
         },
         "body": JSON.stringify(body)
       })
-      .then((data) => {
-        resolve(data.json());
+      .then((res) => {
+        resolve(res.json());
       })
       .catch((err) => {
         reject(err);

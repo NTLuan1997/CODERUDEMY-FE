@@ -132,9 +132,14 @@ export class ValidationService {
   responseHandle(parameter: any) {
     let error = null;
     switch(parameter.type) {
+      case "Email_register_already":
+        error = { "error": parameter.type, "message": Errors.account.exists };
+        break;
+
       case "User Not Found":
       default:
         error = { "error": parameter.type, "message": Errors.responsed.userNotFound };
+        break;
     }
     return error;
   }
