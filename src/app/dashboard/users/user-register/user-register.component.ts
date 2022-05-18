@@ -32,6 +32,7 @@ export class UserRegisterComponent implements OnInit {
     private router: Router,
     private cookie: CookieService
   ) {
+    this.user.Func = "Register";
     this.user.Type = "Register-account";
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
@@ -67,18 +68,22 @@ export class UserRegisterComponent implements OnInit {
       this.userService.usertPost(this.user, EndPoint.user.register)
         .then((data: any) => {
           if (data) {
-            if(data.client.status) {
-              localStorage.setItem("User", JSON.stringify(data.client.doc));
-              this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+            if(data.hasOwnProperty("status")) {
+              this.validator(data);
               
             } else {
-              this.validator(data);
+              if(data.client.status) {
+                localStorage.setItem("User", JSON.stringify(data.client.doc));
+                this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+                
+              } else {
+                this.validator(data);
+              }
             }
           }
         })
         .then(() => {
           this.router.navigate(["/"]);
-          
         })
         .catch((err) => {
           throw err;

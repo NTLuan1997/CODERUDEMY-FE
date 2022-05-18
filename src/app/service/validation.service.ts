@@ -101,15 +101,6 @@ export class ValidationService {
     }
   }
 
-  // confirmPassword: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
-  //   let password = group.get("userPassword");
-  //   let conformPassword = group.get("userConformPassword");
-  //   if(password !== conformPassword) {
-  //     return { "error": "password", "message": Errors.password.conformPassword };
-  //   }
-  //   return null;
-  // }
-
   phone(): ValidatorFn {
     return (control: AbstractControl): [{key: string} | any] | any => {
       if(control.value) {
@@ -132,8 +123,16 @@ export class ValidationService {
   responseHandle(parameter: any) {
     let error = null;
     switch(parameter.type) {
+      case "accountUnregister":
+        error = { "error": parameter.type, "message": Errors.account.unregister };
+        break;
+
       case "Email_register_already":
         error = { "error": parameter.type, "message": Errors.account.exists };
+        break;
+
+      case "passwordIncorrect":
+        error = { "error": parameter.type, "message": Errors.account.passwordIncorrect };
         break;
 
       case "User Not Found":

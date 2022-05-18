@@ -16,6 +16,7 @@ export class User {
     "Code": String;
     "Name": String;
     "Email": String;
+    "Func": String;
     "Password": String;
     "Gender": String;
     "DateOfBirth": Date;
@@ -33,7 +34,7 @@ export const commons = {
 export const EndPoint = {
     "user": {
         "register": "/API/client/client",
-        "signIn": "/API/user/client-signIn"
+        "authen": "/API/authen/client"
     },
     "course": {
         "course-common": "/API/course/course",
@@ -50,7 +51,9 @@ export const EndPoint = {
 
 export const Errors = {
     "account": {
-        "exists": "Email đã được đăng ký"
+        "exists": "Email đã được đăng ký",
+        "passwordIncorrect": "Mật khẩu không chính xác",
+        "unregister": "Tài khoản chưa đăng ký",
     },
     "dateOfBirth": {
         "invalid": "Tuổi người dùng không hợp lệ",

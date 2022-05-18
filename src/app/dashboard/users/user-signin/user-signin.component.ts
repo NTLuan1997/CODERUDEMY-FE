@@ -25,6 +25,7 @@ export class UserSigninComponent implements OnInit {
     private router: Router,
     private cookie: CookieService
   ) {
+    this.user.Type = "Client";
     this.Email = new FormControl(this.user.Email, [this.valid.required(), this.valid.email()]);
     this.Password = new FormControl(this.user.Password,
                     [this.valid.required(), this.valid.minLength(6),
@@ -37,23 +38,23 @@ export class UserSigninComponent implements OnInit {
 
   createForm() {
     this.signInForm = this.fb.group({
-      email: this.Email,
-      password: this.Password
+      Email: this.Email,
+      Password: this.Password
     })
   }
 
   userSignIn() {
     this.submitEvent = true;
     if(this.signInForm.valid) {
-      this.userService.usertPost(this.user, EndPoint.user.signIn)
-      .then((data:any) => {
-        if(data.status) {
-            this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+      this.userService.usertPost(this.user, EndPoint.user.authen)
+      .then((res: any) => {
+        if(res.token) {
+            this.cookie.set("clientToken", res.token, { expires: 3600 });
             this.router.navigate(["/"]);
+
         } else {
-          this.validator(data);
+          this.validator(res);
         }
-        console.log(this.signInForm);
       })
       .catch((err) => {
         throw err;
@@ -61,7 +62,7 @@ export class UserSigninComponent implements OnInit {
     }
   }
 
-  validator(parameter: any) {
+  validator(parameter?: any) {
     Object.keys(this.signInForm.controls).forEach((e) => {
       this.signInForm.controls[e].setErrors(this.valid.response(parameter));
     })
