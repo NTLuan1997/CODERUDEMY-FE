@@ -8,13 +8,14 @@ export class HttpsService<T> {
 
   constructor() { }
 
-  GET(endPoint: String): Promise<any> {
+  GET(token: any, endPoint: String): Promise<any> {
     let url = environment.url + endPoint;
     return  new Promise((resolve, reject) => {
       fetch(url, { 
         "method": 'GET',
         "headers": {
-          "content-type": 'application/json'
+          "content-type": 'application/json',
+          "Authorization": token,
         }
       })
       .then((data) => {

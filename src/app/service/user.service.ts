@@ -11,7 +11,21 @@ export class UserService {
     private service: HttpsService<any>
   ) { }
 
-  usertPost(user: User, endPoint: string) {
+  GET(token: any, endPoint: String ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.service.GET("Bearer " + token, endPoint)
+      .then((result) => {
+        resolve(result);
+
+      })
+      .catch((err) => {
+        reject(err);
+
+      })
+    })
+  }
+
+  usertPost(user: User, endPoint: string):Promise<any> {
     return new Promise((resolve, reject) => {
       this.service.POST(endPoint, user)
       .then((data) => {

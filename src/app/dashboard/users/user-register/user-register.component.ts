@@ -74,7 +74,7 @@ export class UserRegisterComponent implements OnInit {
             } else {
               if(data.client.status) {
                 localStorage.setItem("User", JSON.stringify(data.client.doc));
-                this.cookie.set("clientToken", data.token, { expires: 24 * 60 * 60 });
+                this.cookie.set("clientToken", data.token, { expires: (24 * 60 * 60) });
                 
               } else {
                 this.validator(data);
