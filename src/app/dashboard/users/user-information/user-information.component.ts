@@ -21,6 +21,7 @@ export class UserInformationComponent implements OnInit {
   Phone: FormControl;
   Address: FormControl;
   options: Array<string> = commons.gender;
+  token: string = "";
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,19 @@ export class UserInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.cookie.get("clientToken")) {
+      this.user.Type = "Find";
+      this.token = this.cookie.get("clientToken");
+      this.userService.GET(this.token, EndPoint.client.common)
+      .then((result) => {
+        console.log(result);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
     this.createForm();
   }
 

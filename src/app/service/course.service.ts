@@ -15,7 +15,7 @@ export class CourseService {
   courseGet(endPoint: string, limit?: number, start?: number) {
     let url = (limit && start) ? `${endPoint}?${limit}&${start}` : endPoint;
     return new Promise((resolve, reject) => {
-      this.service.GET(url)
+      this.service.GET(null, url)
       .then((data) => {
         resolve(data);
       })
