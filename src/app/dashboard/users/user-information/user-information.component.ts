@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
-import { commons, User } from "../../../model/model"
+import { commons, User, EndPoint } from "../../../model/model"
 
 @Component({
   selector: 'app-user-information',
@@ -23,7 +25,12 @@ export class UserInformationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private valid: ValidationService,
+    private cookie: CookieService,
+    private userService: UserService
   ) {
+    this.user.Type = "Edit";
+    this.user.Func = "Information";
+    this.user.token = this.cookie.get("token");
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
     this.Gender = new FormControl('', [this.valid.required()]);
@@ -49,8 +56,15 @@ export class UserInformationComponent implements OnInit {
 
   onSubmit() {
     this.submitEvent = true;
-    console.log(this.profileForm);
-    console.log(this.user);
+    // console.log(this.profileForm);
+    // console.log(this.user);
+    this.userService.usertPost(this.user, EndPoint.client.common)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      throw err;
+    })
   }
 
 }

@@ -65,7 +65,7 @@ export class UserRegisterComponent implements OnInit {
   onSubmit() {
     this.submitEvent = true;
     if (this.registerForm.valid) {
-      this.userService.usertPost(this.user, EndPoint.user.register)
+      this.userService.usertPost(this.user, EndPoint.client.common)
         .then((data: any) => {
           if (data) {
             if(data.hasOwnProperty("status")) {

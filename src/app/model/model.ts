@@ -23,6 +23,7 @@ export class User {
     "Phone": String;
     "Address": String;
     "Type": String;
+    "token": String;
     "Thumbnail": String;
     "registerCourse": []
 }
@@ -32,8 +33,8 @@ export const commons = {
 }
 
 export const EndPoint = {
-    "user": {
-        "register": "/API/client/client",
+    "client": {
+        "common": "/API/client/client",
         "authen": "/API/authen/client"
     },
     "course": {
