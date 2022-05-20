@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
@@ -26,13 +27,13 @@ export class UserInformationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private valid: ValidationService,
     private cookie: CookieService,
     private userService: UserService,
     private transform: TransformService
   ) {
     this.user.Type = "Edit";
-    this.user.Func = "Information";
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
     this.Gender = new FormControl('', [this.valid.required()]);
@@ -49,7 +50,7 @@ export class UserInformationComponent implements OnInit {
     if(this.cookie.get("Token")) {
       this.userService.GET(this.cookie.get("Token"), EndPoint.client.common)
       .then((result) => {
-        Object.assign(this.user, result.at(0));
+        this.user.setInfor(result.at(0));
       })
       .then(() => {
         this.createForm();
@@ -89,9 +90,13 @@ export class UserInformationComponent implements OnInit {
   onSubmit() {
     this.submitEvent = true;
     if(this.profileForm.valid) {
-      this.userService.PUT(this.cookie.get("Token"), this.user, EndPoint.client.common)
-      .then((res) => {
-        console.log(res);
+      this.user.Func = "Information";
+
+      this.userService.PUT(this.cookie.get("Token"), this.user.getInfor(), EndPoint.client.common)
+      .then((res: any) => {
+        if(res.status) {
+          this.router.navigate(["/"]);
+        }
       })
       .catch((err) => {
         throw err;

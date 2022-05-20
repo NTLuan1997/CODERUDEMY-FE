@@ -14,18 +14,7 @@ export class TransformService {
   }
 
   gender(value:string) {
-    let gender = "";
-    if(value === "male") {
-      gender = "Nam";
-    }
-
-    if(value === "female"){
-      gender = "Nữ";
-    }
-
-    if(value === "other") {
-      gender = "khác"
-    }
+    let gender = (value === "male")? "Nam": (value === "female")? "Nữ": (value === "other")? "Khác": "";
     return gender;
   }
 }
