@@ -46,11 +46,10 @@ export class UserSigninComponent implements OnInit {
   userSignIn() {
     this.submitEvent = true;
     if(this.signInForm.valid) {
-      this.user.token = this.cookie.get("clientToken");
       this.userService.usertPost(this.user, EndPoint.client.authen)
       .then((res: any) => {
         if(res.token) {
-            this.cookie.set("clientToken", res.token, { expires: 86400 });
+            this.cookie.set("Token", res.token, { expires: (60 * 60 * 24) });
             this.router.navigate(["/"]);
 
         } else {

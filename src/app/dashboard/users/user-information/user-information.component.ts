@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
+import { TransformService } from 'src/app/utils/transform.service';
 import { commons, User, EndPoint } from "../../../model/model"
 
 @Component({
@@ -11,7 +12,7 @@ import { commons, User, EndPoint } from "../../../model/model"
   styleUrls: ['./user-information.component.scss']
 })
 export class UserInformationComponent implements OnInit {
-  user:User = new User();
+  user:User | any = new User();
   submitEvent: Boolean = false;
   profileForm: FormGroup = new FormGroup({});
   Name: FormControl;
@@ -27,11 +28,11 @@ export class UserInformationComponent implements OnInit {
     private fb: FormBuilder,
     private valid: ValidationService,
     private cookie: CookieService,
-    private userService: UserService
+    private userService: UserService,
+    private transform: TransformService
   ) {
     this.user.Type = "Edit";
     this.user.Func = "Information";
-    this.user.token = this.cookie.get("token");
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
     this.Gender = new FormControl('', [this.valid.required()]);
@@ -41,44 +42,61 @@ export class UserInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.cookie.get("clientToken")) {
-      this.user.Type = "Find";
-      this.token = this.cookie.get("clientToken");
-      this.userService.GET(this.token, EndPoint.client.common)
-      .then((result) => {
-        console.log(result);
+    this.information();
+  }
 
+  information() {
+    if(this.cookie.get("Token")) {
+      this.userService.GET(this.cookie.get("Token"), EndPoint.client.common)
+      .then((result) => {
+        Object.assign(this.user, result.at(0));
+      })
+      .then(() => {
+        this.createForm();
+      })
+      .then(() => {
+        this.setValueInform();
       })
       .catch((err) => {
         console.log(err);
       })
     }
-
-    this.createForm();
   }
 
   createForm() {
     this.profileForm = this.fb.group({
-      userName : this.Name,
-      userEmail: this.Email,
-      userGender: this.Gender,
-      dateOfBirth: this.DateOfBirth,
-      userPhone: this.Phone,
-      userAddress: this.Address
+      Name : this.Name,
+      Email: this.Email,
+      Gender: this.Gender,
+      DateOfBirth: this.DateOfBirth,
+      Phone: this.Phone,
+      Address: this.Address
+    })
+  }
+
+  setValueInform() {
+    Object.keys(this.profileForm.controls).forEach((key) => {
+      this.profileForm.controls[key].setValue(this.user[key]);
+      if(key === "DateOfBirth") {
+        this.profileForm.controls[key].setValue(this.transform.date(this.user[key]));
+      }
+      if(key === "Gender") {
+        this.profileForm.controls[key].setValue(this.transform.gender(this.user[key]));
+      }
     })
   }
 
   onSubmit() {
     this.submitEvent = true;
-    // console.log(this.profileForm);
-    // console.log(this.user);
-    this.userService.usertPost(this.user, EndPoint.client.common)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      throw err;
-    })
+    if(this.profileForm.valid) {
+      this.userService.PUT(this.cookie.get("Token"), this.user, EndPoint.client.common)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        throw err;
+      })
+    }
   }
 
 }

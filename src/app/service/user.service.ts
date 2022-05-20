@@ -13,10 +13,9 @@ export class UserService {
 
   GET(token: any, endPoint: String ): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.service.GET("Bearer " + token, endPoint)
+      this.service.GET(`Bearer ${token}`, endPoint)
       .then((result) => {
         resolve(result);
-
       })
       .catch((err) => {
         reject(err);
@@ -27,9 +26,21 @@ export class UserService {
 
   usertPost(user: User, endPoint: string):Promise<any> {
     return new Promise((resolve, reject) => {
-      this.service.POST(endPoint, user)
+      this.service.POST(user, endPoint)
       .then((data) => {
         resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+    })
+  }
+
+  PUT(token: any, user:User, endPoint:string) {
+    return new Promise((resolve, reject) => {
+      this.service.PUT(token, user, endPoint)
+      .then((result) => {
+        resolve(result);
       })
       .catch((err) => {
         reject(err);

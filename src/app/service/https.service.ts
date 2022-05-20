@@ -27,7 +27,7 @@ export class HttpsService<T> {
     })
   }
 
-  POST(endPoint: string, body: any): Promise<any> {
+  POST(body: any, endPoint: string): Promise<any> {
     let url = environment.url + endPoint;
     return  new Promise((resolve, reject) => {
       fetch(url, { 
@@ -46,13 +46,14 @@ export class HttpsService<T> {
     })
   }
 
-  PUT(endPoint: String, body: any): Promise<any> {
+  PUT(token: any, body: any, endPoint: String): Promise<any> {
     let url = environment.url + endPoint;
     return  new Promise((resolve, reject) => {
       fetch(url, { 
         "method": 'PUT',
         "headers": {
-          "content-type": 'application/json'
+          "content-type": 'application/json',
+          "Authorization": token,
         },
         "body": JSON.stringify(body)
       })

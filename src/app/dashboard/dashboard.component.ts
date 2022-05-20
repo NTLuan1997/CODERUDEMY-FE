@@ -20,14 +20,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void { }
 
   ngDoCheck(): void {
-    if (this.cookie.check("clientToken")) {
+    if (this.cookie.check("Token")) {
       this.userSignIn = true;
     }
   }
 
   clientLogout() {
     if (this.userSignIn) {
-      this.cookie.delete("clientToken");
+      this.cookie.delete("Token");
       this.router.navigate(["/"]);
       window.location.reload();
     }
