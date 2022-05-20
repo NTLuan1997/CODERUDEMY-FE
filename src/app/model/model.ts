@@ -24,7 +24,42 @@ export class User {
     "Address": String;
     "Type": String;
     "Thumbnail": String;
-    "registerCourse": []
+    "RegisterCourse": []
+
+    constructor() { }
+
+    public setInfor(model: any) {
+        Object.assign(this, model);
+    }
+
+    public getInfor() {
+        return {
+            "Name": this.Name,
+            "Email": this.Email,
+            "Func": this.Func,
+            "Gender": this.Gender,
+            "DateOfBirth": this.DateOfBirth,
+            "Phone": this.Phone,
+            "Address": this.Address,
+            "Type": this.Type
+        }
+    }
+
+    public getThumbnail() {
+        return {
+            "Func": this.Func,
+            "Type": this.Type,
+            "Thumbnail": this.Thumbnail,
+        }
+    }
+
+    public getRegisterCourse() {
+        return {
+            "Func": this.Func,
+            "Type": this.Type,
+            "RegisterCourse": this.RegisterCourse,
+        }
+    }
 }
 
 export const commons = {

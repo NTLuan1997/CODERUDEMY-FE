@@ -38,7 +38,7 @@ export class UserService {
 
   PUT(token: any, user:User, endPoint:string) {
     return new Promise((resolve, reject) => {
-      this.service.PUT(token, user, endPoint)
+      this.service.PUT(`Bearer ${token}`, user, endPoint)
       .then((result) => {
         resolve(result);
       })
