@@ -12,7 +12,7 @@
                                 <p class="slider-bard--des">Đăng ký</p>
                             </a>
                         </li>
-                        <li>
+                        <li *ngIf="userSignIn">
                             <a [routerLink]="['/information/user']">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>

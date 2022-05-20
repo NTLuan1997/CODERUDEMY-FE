@@ -27,7 +27,7 @@ export class CourseService {
 
   coursePost(course: Course, endPoint: string) {
     return new Promise((resolve, reject) => {
-      this.service.POST(endPoint, course)
+      this.service.POST(course, endPoint)
       .then((data) => {
         resolve(data);
       })

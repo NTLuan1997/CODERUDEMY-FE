@@ -23,7 +23,6 @@ export class User {
     "Phone": String;
     "Address": String;
     "Type": String;
-    "token": String;
     "Thumbnail": String;
     "registerCourse": []
 }
