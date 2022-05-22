@@ -15,12 +15,15 @@ import { commons, User, EndPoint } from "../../../model/model"
 export class UserInformationComponent implements OnInit {
   user:User | any = new User();
   submitEvent: Boolean = false;
-  profileForm: FormGroup = new FormGroup({});
+  Information: FormGroup = new FormGroup({});
+  SecurityCode: FormGroup = new FormGroup({});
   Name: FormControl;
   Email: FormControl;
   Gender: FormControl;
   DateOfBirth: FormControl;
   Phone: FormControl;
+  Password: FormControl;
+  ConformPassword: FormControl;
   Address: FormControl;
   options: Array<string> = commons.gender;
   token: string = "";
@@ -39,6 +42,8 @@ export class UserInformationComponent implements OnInit {
     this.Gender = new FormControl('', [this.valid.required()]);
     this.DateOfBirth = new FormControl('', [this.valid.required(), this.valid.dateOfBirth(0, 80)]);
     this.Phone = new FormControl('', [this.valid.required(), this.valid.phone()]);
+    this.Password = new FormControl("", [this.valid.required(), this.valid.minLength(6), this.valid.maxLength(15), this.valid.password()]);
+    this.ConformPassword = new FormControl("", [this.valid.required(), this.valid.confirmPassword()]);
     this.Address = new FormControl('', [this.valid.required()]);
   }
 
@@ -65,31 +70,36 @@ export class UserInformationComponent implements OnInit {
   }
 
   createForm() {
-    this.profileForm = this.fb.group({
+    this.Information = this.fb.group({
       Name : this.Name,
       Email: this.Email,
       Gender: this.Gender,
       DateOfBirth: this.DateOfBirth,
       Phone: this.Phone,
       Address: this.Address
+    });
+
+    this.SecurityCode = this.fb.group({
+      Password: this.Password,
+      ConformPassword: this.ConformPassword
     })
   }
 
   setValueInform() {
-    Object.keys(this.profileForm.controls).forEach((key) => {
-      this.profileForm.controls[key].setValue(this.user[key]);
+    Object.keys(this.Information.controls).forEach((key) => {
+      this.Information.controls[key].setValue(this.user[key]);
       if(key === "DateOfBirth") {
-        this.profileForm.controls[key].setValue(this.transform.date(this.user[key]));
+        this.Information.controls[key].setValue(this.transform.date(this.user[key]));
       }
       if(key === "Gender") {
-        this.profileForm.controls[key].setValue(this.transform.gender(this.user[key]));
+        this.Information.controls[key].setValue(this.transform.gender(this.user[key]));
       }
     })
   }
 
-  onSubmit() {
+  updateInformation() {
     this.submitEvent = true;
-    if(this.profileForm.valid) {
+    if(this.Information.valid) {
       this.user.Func = "Information";
 
       this.userService.PUT(this.cookie.get("Token"), this.user.getInfor(), EndPoint.client.common)
@@ -102,6 +112,28 @@ export class UserInformationComponent implements OnInit {
         throw err;
       })
     }
+  }
+
+  updatePassword() {
+    this.submitEvent = true;
+    if(this.SecurityCode.valid) {
+      this.user.Func = "Password";
+      this.userService.PUT(this.cookie.get("Token"), this.user.getPassword(), EndPoint.client.common)
+      .then((res: any) => {
+        if(res.status) {
+          this.router.navigate(["/"]);
+        }
+      })
+      .catch((err) => {
+        throw err;
+      })
+    }
+
+  }
+
+  uploadPriture(parameter: any) {
+    let form = new FormData();
+    console.log(parameter.target.files[0]);
   }
 
 }

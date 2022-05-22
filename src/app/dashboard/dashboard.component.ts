@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
     if (this.userSignIn) {
       this.cookie.delete("Token");
       this.router.navigate(["/"]);
-      window.location.reload();
     }
   }
 }

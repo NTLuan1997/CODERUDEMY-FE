@@ -46,7 +46,7 @@ export class UserSigninComponent implements OnInit {
   userSignIn() {
     this.submitEvent = true;
     if(this.signInForm.valid) {
-      this.userService.usertPost(this.user, EndPoint.client.authen)
+      this.userService.POST(null, this.user, EndPoint.client.authen)
       .then((res: any) => {
         if(res.token) {
             this.cookie.set("Token", res.token, { expires: (60 * 60 * 24) });

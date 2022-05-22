@@ -1,12 +1,16 @@
 .user-information {
+    .profile_title {
+        border-bottom: 1px solid #0000001a;
+        color: #24292f;
+        font-size: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    .information--container {
+        box-shadow: 0px 0px 2px 0px #00000030;
+        padding: 15px;
+    }
     .information--profile {
-        .profile_title {
-            border-bottom: 1px solid #0000001a;
-            color: #24292f;
-            font-size: 20px;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
         .priture-wrapper {
             position: relative;
             .profile_infor__priture {

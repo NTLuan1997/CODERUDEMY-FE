@@ -33,7 +33,7 @@ export class UserRegisterComponent implements OnInit {
     private cookie: CookieService
   ) {
     this.user.Func = "Register";
-    this.user.Type = "Register-account";
+    this.user.Type = "Register";
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
     this.Password = new FormControl('', [this.valid.required(), this.valid.minLength(6),
@@ -65,19 +65,21 @@ export class UserRegisterComponent implements OnInit {
   onSubmit() {
     this.submitEvent = true;
     if (this.registerForm.valid) {
-      this.userService.usertPost(this.user, EndPoint.client.common)
-        .then((data: any) => {
-          if (data) {
-            if(data.hasOwnProperty("status")) {
-              this.validator(data);
+      let model:any = this.user.getInfor();
+      model.Password = this.user.Password;
+      model.DateOfBirth = new Date(this.user.DateOfBirth).toISOString();
+      this.userService.POST("Empty", model, EndPoint.client.common)
+        .then((res: any) => {
+          if (res) {
+            if(res.hasOwnProperty("status")) {
+              this.validator(res);
               
             } else {
-              if(data.client.status) {
-                localStorage.setItem("User", JSON.stringify(data.client.doc));
-                this.cookie.set("Token", data.token, { expires: (60 * 60 * 24) });
+              if(res.status) {
+                this.cookie.set("Token", res.token, { expires: (60 * 60 * 24) });
                 
               } else {
-                this.validator(data);
+                this.validator(res);
               }
             }
           }

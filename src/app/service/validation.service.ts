@@ -91,8 +91,8 @@ export class ValidationService {
   confirmPassword(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
       let group: any = control.parent;
-      let password = group?.controls["userPassword"];
-      let conformPassword = group?.controls["userConformPassword"];
+      let password = group?.controls["Password"];
+      let conformPassword = group?.controls["ConformPassword"];
 
       if(password?.value !== conformPassword?.value) {
         return { "error": "password", "message": Errors.password.conformPassword };

@@ -18,6 +18,7 @@ export class User {
     "Email": String;
     "Func": String;
     "Password": String;
+    "ConformPassword": String;
     "Gender": String;
     "DateOfBirth": Date;
     "Phone": String;
@@ -58,6 +59,14 @@ export class User {
             "Func": this.Func,
             "Type": this.Type,
             "RegisterCourse": this.RegisterCourse,
+        }
+    }
+
+    public getPassword() {
+        return {
+            "Func": this.Func,
+            "Type": this.Type,
+            "Password": this.Password,
         }
     }
 }

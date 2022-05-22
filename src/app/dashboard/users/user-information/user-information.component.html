@@ -1,11 +1,12 @@
 <div class="user-information">
-    <div class="information--profile">
+    <!-- INFORMATION -->
+    <div class="information--profile information--container">
         <h2 class="profile_title">
             <a [routerLink]="['/trang-chu']" class="back-page" ><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
             Thông tin người dùng
         </h2>
         <div class="profile_infor">
-            <form [formGroup]="profileForm" (submit)="onSubmit()">
+            <form [formGroup]="Information" (submit)="updateInformation()">
                 <div class="row">
                     <div class="col-6">
                         <app-common-form-input
@@ -82,14 +83,52 @@
                             <div class="profile_infor__priture">
                                 <img src="../../../../assets/img/product/course_00.jpg" alt="user priture">
                             </div>
-                            <button type="button" class="priture--update">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </button>
-                            <h3 class="priture--name">Nguyễn Phương Duy</h3>
+                            <input type="file" (change)="uploadPriture($event)">
+                            <h3 class="priture--name">{{user.Name}}</h3>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
+    <!-- PASSWORD -->
+    <div class="password--profile information--container mt-4">
+        <h2 class="profile_title">Mật khẩu người dùng</h2>
+        <div class="profile_password">
+            <form [formGroup]="SecurityCode" (submit)="updatePassword()">
+                <div class="row">
+                    <div class="col-6">
+                        <app-common-form-input
+                            Label="Mật khẩu"
+                            Placeholder=""
+                            [FormController]="Password"
+                            [Submit]="submitEvent"
+                            (Input)="user.Password=$event"
+                            Id="Password"
+                            Type="password"
+                            TypeElement="Input">
+                        </app-common-form-input>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-submition">Cập nhật</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <app-common-form-input
+                            Label="Nhập lại Mật khẩu"
+                            Placeholder=""
+                            [FormController]="ConformPassword"
+                            [Submit]="submitEvent"
+                            (Input)="user.ConformPassword=$event"
+                            Id="ConformPassword"
+                            Type="password"
+                            TypeElement="Input">
+                        </app-common-form-input>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

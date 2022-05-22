@@ -24,9 +24,9 @@ export class UserService {
     })
   }
 
-  usertPost(user: User, endPoint: string):Promise<any> {
+  POST(token:any, user: User, endPoint: string):Promise<any> {
     return new Promise((resolve, reject) => {
-      this.service.POST(user, endPoint)
+      this.service.POST(token, user, endPoint)
       .then((data) => {
         resolve(data);
       })
