@@ -27,13 +27,14 @@ export class HttpsService<T> {
     })
   }
 
-  POST(body: any, endPoint: string): Promise<any> {
+  POST(token:any, body: any, endPoint: string): Promise<any> {
     let url = environment.url + endPoint;
     return  new Promise((resolve, reject) => {
       fetch(url, { 
         "method": 'POST',
         "headers": {
-          "content-type": 'application/json'
+          "content-type": 'application/json',
+          "Authorization": token,
         },
         "body": JSON.stringify(body)
       })
