@@ -27,33 +27,28 @@
                     width: 100%;
                 }
             }
-            .priture--update {
-                background-color: #42546e;
-                bottom: 35px;
-                border-radius: 100%;
-                border-color: unset;
-                border-top-color: transparent;
-                border-left-color: transparent;
-                border-right-color: transparent;
-                border-bottom-color: transparent;
-                box-shadow: 0px 0px 2px 0px #00000030;
-                color: #ffffff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 32px;
-                left: 50%;
+            .priture--input {
+                bottom: 40px;
+                border-radius: 25px;
+                background-color: #031b3d;
+                cursor: pointer;
+                height: 25px;
+                left: 193px;
                 position: absolute;
-                transform: translateX(-345%);
-                width: 32px;
-                &:focus {
-                    outline-color: transparent;
-                }
-                &:active {
-                    border-top-color: transparent;
-                    border-left-color: transparent;
+                padding-left: 6px;
+                overflow: hidden;
+                width: 25px;
+                &::before {
+                    color: #ffffff;
+                    content: "\f044";
+                    font-family: "FontAwesome";
+                    font-weight: 500;
+                    font-size: 15px;
+                    margin-right: 15px;
+                    vertical-align: text-bottom;
                 }
             }
+
             .priture--name {
                 font-size: 25px;
                 margin-top: 10px;

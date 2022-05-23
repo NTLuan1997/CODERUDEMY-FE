@@ -81,9 +81,9 @@
                     <div class="col-6">
                         <div class="priture-wrapper">
                             <div class="profile_infor__priture">
-                                <img src="../../../../assets/img/product/course_00.jpg" alt="user priture">
+                                <img [src]="Priture" alt="user priture">
                             </div>
-                            <input type="file" (change)="uploadPriture($event)">
+                            <input type="file" class="priture--input" (change)="uploadPriture($event)">
                             <h3 class="priture--name">{{user.Name}}</h3>
                         </div>
                     </div>

@@ -47,5 +47,23 @@ export class UserService {
       })
     })
   }
+
+  PUTPRITURE(body: any, endPoint: string) {
+    return new Promise((resolve, reject) => {
+      fetch(endPoint, {
+        "method": "POST",
+        "body": body
+      })
+      .then((res: any) => {
+        return res.json();
+      })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+    })
+  }
 }
 
