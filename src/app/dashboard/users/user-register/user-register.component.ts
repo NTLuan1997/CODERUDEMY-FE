@@ -71,21 +71,14 @@ export class UserRegisterComponent implements OnInit {
       this.userService.POST("Empty", model, EndPoint.client.common)
         .then((res: any) => {
           if (res) {
-            if(res.hasOwnProperty("status")) {
-              this.validator(res);
-              
-            } else {
               if(res.status) {
                 this.cookie.set("Token", res.token, { expires: (60 * 60 * 24) });
-                
+                this.router.navigate(["/"]);
+
               } else {
                 this.validator(res);
               }
-            }
           }
-        })
-        .then(() => {
-          this.router.navigate(["/"]);
         })
         .catch((err) => {
           throw err;
