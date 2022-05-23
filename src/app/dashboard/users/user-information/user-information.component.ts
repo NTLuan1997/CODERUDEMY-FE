@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { TransformService } from 'src/app/utils/transform.service';
+import { environment } from 'src/environments/environment';
 import { commons, User, EndPoint } from "../../../model/model"
 
 @Component({
@@ -23,6 +24,7 @@ export class UserInformationComponent implements OnInit {
   DateOfBirth: FormControl;
   Phone: FormControl;
   Password: FormControl;
+  Priture: String = "";
   ConformPassword: FormControl;
   Address: FormControl;
   options: Array<string> = commons.gender;
@@ -36,6 +38,7 @@ export class UserInformationComponent implements OnInit {
     private userService: UserService,
     private transform: TransformService
   ) {
+    this.token = this.cookie.get("Token");
     this.user.Type = "Edit";
     this.Name = new FormControl('', [this.valid.required()]);
     this.Email = new FormControl('', [this.valid.required(), this.valid.email()]);
@@ -52,10 +55,11 @@ export class UserInformationComponent implements OnInit {
   }
 
   information() {
-    if(this.cookie.get("Token")) {
-      this.userService.GET(this.cookie.get("Token"), EndPoint.client.common)
+    if(this.token) {
+      this.userService.GET(this.token, EndPoint.client.common)
       .then((result) => {
         this.user.setInfor(result.at(0));
+          this.Priture = (this.user.Thumbnail)? `${EndPoint.priture}${this.user.Thumbnail}` : "../../../../assets/img/user.jpg";
       })
       .then(() => {
         this.createForm();
@@ -102,7 +106,7 @@ export class UserInformationComponent implements OnInit {
     if(this.Information.valid) {
       this.user.Func = "Information";
 
-      this.userService.PUT(this.cookie.get("Token"), this.user.getInfor(), EndPoint.client.common)
+      this.userService.PUT(this.token, this.user.getInfor(), EndPoint.client.common)
       .then((res: any) => {
         if(res.status) {
           this.router.navigate(["/"]);
@@ -118,7 +122,7 @@ export class UserInformationComponent implements OnInit {
     this.submitEvent = true;
     if(this.SecurityCode.valid) {
       this.user.Func = "Password";
-      this.userService.PUT(this.cookie.get("Token"), this.user.getPassword(), EndPoint.client.common)
+      this.userService.PUT(this.token, this.user.getPassword(), EndPoint.client.common)
       .then((res: any) => {
         if(res.status) {
           this.router.navigate(["/"]);
@@ -132,8 +136,45 @@ export class UserInformationComponent implements OnInit {
   }
 
   uploadPriture(parameter: any) {
-    let form = new FormData();
-    console.log(parameter.target.files[0]);
+    if(this.token) {
+      let form = new FormData();
+      form.append("client", parameter.target.files[0]);
+      form.append("Type", "Client");
+
+      if(this.user.Thumbnail) {
+        form.append("Priture", this.user.Thumbnail);
+      }
+
+      if(commons.file.includes(parameter.target.files[0].name.split(".").at(1))) {
+        if(parameter.target.files[0].size < 1000000) {
+          this.userService.PUTPRITURE(form, environment.urlPriture)
+          .then((res: any): Promise<any> => {
+            if(res.status) {
+              this.user.Func = "Thumbnail";
+              this.user.Thumbnail = res.destination;
+              return this.userService.PUT(this.token, this.user.getThumbnail(), EndPoint.client.common);
+
+            } else {
+              return new Promise((resolve, reject) => { reject({status: false}) });
+            }
+          })
+          .then((res: any) => {
+            if(res.status) {
+              window.location.reload();
+            }
+          })
+          .catch((err) => {
+            throw err;
+          })
+
+        } else {
+          console.log("Ban hong the update hinh anh kich thuoc phai nho hon 1000000");
+        }
+
+      } else {
+        console.log("Ban hong the update hinh anh loai hinh anh khong hop le");
+      }
+    }
   }
 
 }

@@ -72,10 +72,13 @@ export class User {
 }
 
 export const commons = {
-    "gender": ["Nam", "Nữ", "Khác"]
+    "gender": ["Nam", "Nữ", "Khác"],
+    "file": ["jpg", "jpeg", "png", "pdf"]
 }
 
 export const EndPoint = {
+    // "priture": "http://localhost/www/CODERUDEMY-IMG/", // => run localhost
+    "priture": "https://nguyenphuongduy.000webhostapp.com/",
     "client": {
         "common": "/API/client/client",
         "authen": "/API/authen/client"
