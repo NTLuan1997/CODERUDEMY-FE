@@ -85,6 +85,7 @@
                             </div>
                             <input type="file" class="priture--input" (change)="uploadPriture($event)">
                             <h3 class="priture--name">{{user.Name}}</h3>
+                            <p class="priure--error" *ngIf="fileError">{{fileError}}</p>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,6 @@
                             Type="password"
                             TypeElement="Input">
                         </app-common-form-input>
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-submition">Cập nhật</button>
                         </div>
@@ -128,6 +128,14 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- COURSE REGISTER -->
+    <div class="course--profile information--container mt-4">
+        <h2 class="profile_title">Khóa học đã đăng ký</h2>
+        <div class="profile_course_register">
+            <div class="course_register__blank">Khóa học đăng ký hiện rỗng</div>
         </div>
     </div>
 

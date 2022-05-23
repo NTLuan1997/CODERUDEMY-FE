@@ -110,6 +110,10 @@ export const Errors = {
     "email": {
         "invalid": "Email không hợp lệ",
     },
+    "file": {
+        "size": "Kích thước file không hợp lệ",
+        "type": "Loại file không hợp lệ"
+    },
     "input" : {
         "required": "Trường này không được trống",
         "minLength": "Độ dài nội dung phải lớn hơn",

@@ -7,7 +7,8 @@ export const environment = {
   // url: "https://code-udemy.herokuapp.com",
   url: "http://localhost:3500",
   urlThumbnail: "https://nguyenphuongduy.000webhostapp.com/img/",
-  urlPriture: "http://localhost/www/CODERUDEMY-IMG/index.php",
+  // urlPriture: "http://localhost/www/CODERUDEMY-IMG/index.php",
+  urlPriture: "https://nguyenphuongduy.000webhostapp.com"
 };
 
 /*

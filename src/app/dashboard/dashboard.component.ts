@@ -9,7 +9,7 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  userSignIn: Boolean = false;
+  signIn: Boolean = false;
 
   constructor(
     private userService: UserService,
@@ -21,14 +21,14 @@ export class DashboardComponent implements OnInit {
 
   ngDoCheck(): void {
     if (this.cookie.check("Token")) {
-      this.userSignIn = true;
+      this.signIn = true;
     }
   }
 
-  clientLogout() {
-    if (this.userSignIn) {
+  signOut() {
+    if (this.signIn) {
       this.cookie.delete("Token");
-      this.userSignIn = false;
+      this.signIn = false;
       this.router.navigate(["/"]);
     }
   }

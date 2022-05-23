@@ -6,7 +6,7 @@ import { UserService } from 'src/app/service/user.service';
 import { ValidationService } from 'src/app/service/validation.service';
 import { TransformService } from 'src/app/utils/transform.service';
 import { environment } from 'src/environments/environment';
-import { commons, User, EndPoint } from "../../../model/model"
+import { commons, User, EndPoint, Errors } from "../../../model/model"
 
 @Component({
   selector: 'app-user-information',
@@ -29,6 +29,8 @@ export class UserInformationComponent implements OnInit {
   Address: FormControl;
   options: Array<string> = commons.gender;
   token: string = "";
+  fileError: string = "";
+  registerCourse: Array<any> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +62,7 @@ export class UserInformationComponent implements OnInit {
       .then((result) => {
         this.user.setInfor(result.at(0));
           this.Priture = (this.user.Thumbnail)? `${EndPoint.priture}${this.user.Thumbnail}` : "../../../../assets/img/user.jpg";
+          this.registerCourse = this.user.RegisterCourse;
       })
       .then(() => {
         this.createForm();
@@ -147,6 +150,7 @@ export class UserInformationComponent implements OnInit {
 
       if(commons.file.includes(parameter.target.files[0].name.split(".").at(1))) {
         if(parameter.target.files[0].size < 1000000) {
+          this.fileError = "";
           this.userService.PUTPRITURE(form, environment.urlPriture)
           .then((res: any): Promise<any> => {
             if(res.status) {
@@ -168,11 +172,12 @@ export class UserInformationComponent implements OnInit {
           })
 
         } else {
-          console.log("Ban hong the update hinh anh kich thuoc phai nho hon 1000000");
+          this.fileError = Errors.file.size;
         }
 
       } else {
-        console.log("Ban hong the update hinh anh loai hinh anh khong hop le");
+        this.fileError = Errors.file.type;
+
       }
     }
   }

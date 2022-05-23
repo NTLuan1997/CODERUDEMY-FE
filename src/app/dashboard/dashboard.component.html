@@ -4,7 +4,7 @@
             <div class="col-2">
                 <div class="slider-wrapper">
                     <ul class="slider-bard list-unstyled mb-0">
-                        <li *ngIf="!userSignIn">
+                        <li *ngIf="!signIn">
                             <a [routerLink]="['/user/register']">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -12,7 +12,7 @@
                                 <p class="slider-bard--des">Đăng ký</p>
                             </a>
                         </li>
-                        <li *ngIf="userSignIn">
+                        <li *ngIf="signIn">
                             <a [routerLink]="['/information/user']">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -20,7 +20,7 @@
                                 <p class="slider-bard--des">Người dùng</p>
                             </a>
                         </li>
-                        <li *ngIf="!userSignIn">
+                        <li *ngIf="!signIn">
                             <a [routerLink]="['/user/signin']">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -28,8 +28,8 @@
                                 <p class="slider-bard--des">Đăng nhập</p>
                             </a>
                         </li>
-                        <li *ngIf="userSignIn">
-                            <a (click)="clientLogout()">
+                        <li *ngIf="signIn">
+                            <a (click)="signOut()">
                                 <p class="slider-bard--icon">
                                     <i class="fa fa-power-off" aria-hidden="true"></i>
                                 </p>
