@@ -127,7 +127,7 @@ export class ValidationService {
         error = { "error": parameter.type, "message": Errors.account.unregister };
         break;
 
-      case "Email_register_already":
+      case "emailRegisterAlready":
         error = { "error": parameter.type, "message": Errors.account.exists };
         break;
 
